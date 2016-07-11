@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.JFrame;
 
+import Control.CtrlStaff;
 import cutomer.Home;
 import cutomer.Menu;
 import cutomer.WelcomeLoginDisplay;
@@ -23,7 +24,7 @@ public class WelcomeLogin extends JFrame{
 	}
 	
 	public static void main(String[] args){
-		new Menu();
+		new WelcomeLogin();
 	}
 	
 }
