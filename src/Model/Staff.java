@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class Staff {
+public class Staff {
 	protected String staff_id, identity, password, name, address, status, description;
 	protected int bDay, bMonth, bYear;
 	protected boolean isMale, isAvailable;
