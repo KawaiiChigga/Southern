@@ -28,7 +28,7 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
 	
-	private JLabel lblNAME, lblPASS, lblICON;
+	private JLabel lblNAME, lblPASS, lblICON, lblSITE, lblSITEE;
 	private JTextField txtNAME;
 	private JPasswordField txtPASS;
 	private JCheckBox cbPASS;
@@ -48,54 +48,65 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
-//		ImageIcon img = new ImageIcon("src/images/.jpg");
-//		bg = img.getImage();
+		ImageIcon img = new ImageIcon("img/bg.jpg");
+		bg = img.getImage();
+		
+		lblSITE = new JLabel();
+		lblSITE.setIcon(new ImageIcon("img/site.png"));
+		lblSITE.setBounds(0, 5, 1366, 29);
+		add(lblSITE);
 		
 		lblICON = new JLabel();
-		lblICON.setIcon(new ImageIcon("img/abs.png"));
-		lblICON.setBounds(580, 10, 200, 200);
+		lblICON.setIcon(new ImageIcon("img/logo_white.png"));
+		lblICON.setBounds(500, 50, 400, 239);
+		add(lblICON);
 		
 		lblNAME = new JLabel("Name");
 		lblNAME.setForeground(Color.WHITE);
-		lblNAME.setFont(new Font("Agency FB", Font.ITALIC, 50));
-		lblNAME.setBounds(580, 300, 150, 50);
+		lblNAME.setFont(new Font("Agency FB", Font.PLAIN, 50));
+		lblNAME.setBounds(450, 350, 150, 50);
+		add(lblNAME);
 		
 		txtNAME = new JTextField();
 		txtNAME.setFont(new Font("Agency FB", Font.CENTER_BASELINE, 32));
-		txtNAME.setBounds(580, 350, 220, 40);
+		txtNAME.setBounds(700, 355, 220, 40);
+		add(txtNAME);
 		
 		lblPASS = new JLabel("Password");
 		lblPASS.setForeground(Color.WHITE);
-		lblPASS.setFont(new Font("Agency Fb", Font.ITALIC, 50));
-		lblPASS.setBounds(580, 400, 170, 50);
+		lblPASS.setFont(new Font("Agency Fb", Font.PLAIN, 50));
+		lblPASS.setBounds(450, 425, 170, 50);
+		add(lblPASS);
 		
 		txtPASS = new JPasswordField();
 		txtPASS.setEchoChar('*');
 		txtPASS.setFont(new Font("Agency FB", Font.CENTER_BASELINE, 32));
-		txtPASS.setBounds(580, 450, 220, 40);
+		txtPASS.setBounds(700, 430, 220, 40);
+		add(txtPASS);
 		
 		cbPASS = new JCheckBox("Show Password");
 		cbPASS.setContentAreaFilled(false);
 		cbPASS.setForeground(Color.WHITE);
-		cbPASS.setFont(new Font("Agency FB", Font.PLAIN, 32));
-		cbPASS.setBounds(580, 500, 250, 25);
+		cbPASS.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		cbPASS.setBounds(700, 475, 250, 25);
+		add(cbPASS);
 		
-		btn = new JButton("Login");
-		btn.setFont(new Font("Agency FB", Font.PLAIN, 20));
-		btn.setForeground(Color.WHITE);
-		btn.setBackground(Color.DARK_GRAY);
-		btn.setBounds(550, 550, 300, 50);
-	
+		btn = new JButton();
+		btn.setIcon(new ImageIcon("img/go.png"));
+		btn.setContentAreaFilled(false);
+		btn.setBorderPainted(false);
+		btn.setBounds(550, 530, 300, 139);
+		add(btn);
+		
+		lblSITEE = new JLabel();
+		lblSITEE.setIcon(new ImageIcon("img/site.png"));
+		lblSITEE.setBounds(0, 710, 1366, 29);
+		add(lblSITEE);
+		
 		txtNAME.addKeyListener(this);
 		txtPASS.addKeyListener(this);
 		
-		add(lblICON);
-		add(lblNAME);
-		add(txtNAME);
-		add(lblPASS);
-		add(txtPASS);
-		add(cbPASS);
-		add(btn);
+		
 		
 		cbPASS.addActionListener(new ActionListener() {
 			

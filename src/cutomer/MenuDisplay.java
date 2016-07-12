@@ -1,52 +1,123 @@
 package cutomer;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuDisplay extends JPanel {
 
+public class MenuDisplay extends JPanel implements ActionListener {
+
+	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
+	
 	private JFrame frame;
-
-	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost/dbrestoran";
-	private static String username = "root";
-	private static String password = "";
-
-	public MenuDisplay(JFrame frame) {
-
+	private Image bg;
+	private JLabel lblICON;
+	
+	public MenuDisplay(JFrame frame){
 		this.frame = frame;
 		initMenuDisplay();
 	}
-
-	private void initMenuDisplay() {
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, username, password);
-			Statement stm = conn.createStatement();
-			ResultSet hasil = stm.executeQuery("Select * From menulist");
-
-			while (hasil.next()) {
-
-				String nama = hasil.getString("menu_name");
-				System.out.println(nama);
+	
+	private void initMenuDisplay(){
+		
+		setPreferredSize(new Dimension(screenWidth, screenHeight));
+		setBackground(Color.WHITE);
+		setLayout(null);
+		
+		lblICON = new JLabel();
+		lblICON.setIcon(new ImageIcon("img/logo_chocolate2.png"));
+		lblICON.setBounds(20, 10, 200, 120);
+		add(lblICON);
+		
+		JButton btnAPP = new JButton();
+		btnAPP.setContentAreaFilled(false);
+		btnAPP.setBorderPainted(false);
+		btnAPP.setIcon(new ImageIcon("img/type-01.png"));
+		btnAPP.setForeground(Color.WHITE);
+		btnAPP.setBounds(295, 150, 330, 255);
+		add(btnAPP);
+		
+		btnAPP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+//				new Menu());
+				frame.dispose();
 			}
-			conn.close();
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		});
+		
+		JButton btnMC = new JButton();
+		btnMC.setContentAreaFilled(false);
+		btnMC.setBorderPainted(false);
+		btnMC.setIcon(new ImageIcon("img/type-03.png"));
+		btnMC.setForeground(Color.WHITE);
+		btnMC.setBounds(710, 150, 330, 255);
+		add(btnMC);
+		
+		btnMC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+//				new Menu());
+				frame.dispose();
+			}
+		});
+		
+		
+		JButton btnDESS = new JButton();
+		btnDESS.setContentAreaFilled(false);
+		btnDESS.setBorderPainted(false);
+		btnDESS.setIcon(new ImageIcon("img/type-04.png"));
+		btnDESS.setForeground(Color.WHITE);
+		btnDESS.setBounds(295, 450, 330, 255);
+		add(btnDESS);
+		
+		btnDESS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+//				new Menu());
+				frame.dispose();
+			}
+		});
+		
+		JButton btnDRINKS = new JButton();
+		btnDRINKS.setContentAreaFilled(false);
+		btnDRINKS.setBorderPainted(false);
+		btnDRINKS.setIcon(new ImageIcon("img/type-02.png"));
+		btnDRINKS.setForeground(Color.WHITE);
+		btnDRINKS.setBounds(710, 450, 330, 255);
+		add(btnDRINKS);
+		
+		btnDRINKS.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+//				new Menu());
+				frame.dispose();
+			}
+		});
+		
 	}
+
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+
+		repaint();
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		g.drawImage(bg, 0, 0, this);
+		
+		Toolkit.getDefaultToolkit().sync();
+	}
+	
 }

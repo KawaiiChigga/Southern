@@ -2,7 +2,7 @@ package cutomer;
 
 import javax.swing.JFrame;
 
-public class Menu extends JFrame{
+public class Menu extends JFrame {
 
 	public Menu(){
 		initMenu();
@@ -13,7 +13,7 @@ public class Menu extends JFrame{
 		setResizable(false);
 		pack();
 		
-		setTitle(null);
+		setTitle("Southern");
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
