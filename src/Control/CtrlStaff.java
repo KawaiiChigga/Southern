@@ -7,12 +7,13 @@ import java.util.ArrayList;
 
 import Model.Staff;
 import Database.DbMySQL;
-
 public class CtrlStaff {
-	private List<Staff> staffInfo = new ArrayList();
-	
+	public CtrlStaff(){
+		getStaffInfo();
+	}
 	public List<Staff> getStaffInfo() {
 		String sql = "select * from staff";
+		List<Staff> staffInfo = new ArrayList();
 		try {
 			if (DbMySQL.logOn() == null) {
 				return null;
@@ -51,11 +52,5 @@ public class CtrlStaff {
 		return staffInfo;
 	}
 	
-	public boolean logIn (String id, String pass, int arrNum) {
-		if (id.equals(staffInfo.get(arrNum).getIdentity()) && pass.equals(staffInfo.get(arrNum).getPassword())) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+
 }
