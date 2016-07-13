@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import Model.Staff;
 import Database.DbMySQL;
 public class CtrlStaff {
-	public CtrlStaff(){
-		getStaffInfo();
-	}
+	
 	public List<Staff> getStaffInfo() {
 		String sql = "select * from staff";
 		List<Staff> staffInfo = new ArrayList();

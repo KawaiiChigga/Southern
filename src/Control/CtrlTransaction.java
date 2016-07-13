@@ -9,9 +9,8 @@ import Database.DbMySQL;
 import Model.Transaction;
 
 public class CtrlTransaction {
-	List<Transaction> transaction = new ArrayList();
-	
 	public List<Transaction> getTransList() {
+		List<Transaction> transaction = new ArrayList();
 		String sql = "select * from transaction";
 		try {
 			if (DbMySQL.logOn() == null) {

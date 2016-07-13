@@ -1,11 +1,24 @@
 package Model;
 
 public class Menu {
-	private String menu_name, category, type, explanation;
-	private int menu_id, time;
+	private String menu_name, category, type, explanation, url ;
+	private int menu_id, duration;
 	private boolean isAvailable;
 	private double price;
 	
+	public Menu(String menu_name, String category, String type, String explanation, String url, int menu_id, int duration,
+			boolean isAvailable, double price) {
+		super();
+		this.menu_name = menu_name;
+		this.category = category;
+		this.type = type;
+		this.explanation = explanation;
+		this.url = url;
+		this.menu_id = menu_id;
+		this.duration = duration;
+		this.isAvailable = isAvailable;
+		this.price = price;
+	}
 	public String getMenu_name() {
 		return menu_name;
 	}
@@ -30,17 +43,23 @@ public class Menu {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public int getMenu_id() {
 		return menu_id;
 	}
 	public void setMenu_id(int menu_id) {
 		this.menu_id = menu_id;
 	}
-	public int getTime() {
-		return time;
+	public int getDuration() {
+		return duration;
 	}
-	public void setTime(int time) {
-		this.time = time;
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 	public boolean isAvailable() {
 		return isAvailable;
