@@ -5,11 +5,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,10 +22,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Control.CtrlStaff;
+import Model.Staff;
+
 
 public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyListener {
 
-	
+	private List<Staff> cs;
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
@@ -43,6 +48,7 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 	}
 	
 	private void initWelcomeLoginDisplay(){
+		
 		
 		setPreferredSize(new Dimension(screenWidth, screenHeight));
 		setBackground(Color.DARK_GRAY);
@@ -126,13 +132,31 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 	
 	@Override
 	public void keyPressed(KeyEvent x) {
-
+	
 		if(x.getKeyCode() == KeyEvent.VK_ENTER){
-			
+			if(cs==null)
+			{
+				cs=new CtrlStaff().getStaffInfo();
+			}
+
 			String name = txtNAME.getText();
 			String pass = txtPASS.getText();
-			
-			if(name.equals("hizkia") && pass.equals("hizkia")){
+			boolean success=false;
+			int i=0;
+			while(!success&&i<cs.size())
+			{
+
+				if(cs.get(i).getIdentity().equalsIgnoreCase(name)&&cs.get(i).getPassword().equals(pass))
+				{
+					success=true;
+				}
+				else
+				{
+					i++;
+					
+				}
+			}
+			if(success){
 				new Home();
 				frame.dispose();
 			}else{
