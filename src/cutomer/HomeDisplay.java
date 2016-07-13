@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.WelcomeLogin;
+
 
 public class HomeDisplay extends JPanel implements ActionListener {
 
@@ -99,6 +101,21 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnMYACC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 //				new Menu());
+				frame.dispose();
+			}
+		});
+		
+		JButton btnBack = new JButton();
+		btnBack.setContentAreaFilled(false);
+		btnBack.setBorderPainted(false);
+		btnBack.setIcon(new ImageIcon("img/back.png"));
+		btnBack.setForeground(Color.WHITE);
+		btnBack.setBounds(1146, 50, 109, 46);
+		add(btnBack);
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new WelcomeLogin();
 				frame.dispose();
 			}
 		});
