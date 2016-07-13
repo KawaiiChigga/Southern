@@ -38,6 +38,7 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 	private JPasswordField txtPASS;
 	private JCheckBox cbPASS;
 	private JButton btn;
+	private JButton btnC;
 	private JFrame frame;
 	private Image bg;
 	
@@ -101,8 +102,15 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		btn.setIcon(new ImageIcon("img/go.png"));
 		btn.setContentAreaFilled(false);
 		btn.setBorderPainted(false);
-		btn.setBounds(550, 530, 300, 139);
+		btn.setBounds(370, 530, 300, 139);
 		add(btn);
+		
+		btnC = new JButton();
+		btnC.setIcon(new ImageIcon("img/goC.png"));
+		btnC.setContentAreaFilled(false);
+		btnC.setBorderPainted(false);
+		btnC.setBounds(730, 530, 300, 139);
+		add(btnC);
 		
 		lblSITEE = new JLabel();
 		lblSITEE.setIcon(new ImageIcon("img/site.png"));
@@ -111,8 +119,23 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		
 		txtNAME.addKeyListener(this);
 		txtPASS.addKeyListener(this);
-		
-		
+		btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				loginDetector();
+			}
+		});
+		btnC.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new Home();
+				frame.dispose();
+			}
+		});
 		
 		cbPASS.addActionListener(new ActionListener() {
 			
@@ -134,38 +157,40 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 	public void keyPressed(KeyEvent x) {
 	
 		if(x.getKeyCode() == KeyEvent.VK_ENTER){
-			if(cs==null)
-			{
-				cs=new CtrlStaff().getStaffInfo();
-			}
-
-			String name = txtNAME.getText();
-			String pass = txtPASS.getText();
-			boolean success=false;
-			int i=0;
-			while(!success&&i<cs.size())
-			{
-
-				if(cs.get(i).getIdentity().equalsIgnoreCase(name)&&cs.get(i).getPassword().equals(pass))
-				{
-					success=true;
-				}
-				else
-				{
-					i++;
-					
-				}
-			}
-			if(success){
-				new Home();
-				frame.dispose();
-			}else{
-				txtNAME.setText("");
-				txtPASS.setText("");
-			}
+			loginDetector();
 		}
 	}
+	public void loginDetector(){
+		if(cs==null)
+		{
+			cs=new CtrlStaff().getStaffInfo();
+		}
 
+		String name = txtNAME.getText();
+		String pass = txtPASS.getText();
+		boolean success=false;
+		int i=0;
+		while(!success&&i<cs.size())
+		{
+
+			if(cs.get(i).getIdentity().equalsIgnoreCase(name)&&cs.get(i).getPassword().equals(pass))
+			{
+				success=true;
+			}
+			else
+			{
+				i++;
+				
+			}
+		}
+		if(success){
+			new Home();
+			frame.dispose();
+		}else{
+			txtNAME.setText("");
+			txtPASS.setText("");
+		}
+	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
