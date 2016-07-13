@@ -9,7 +9,7 @@ import Model.Staff;
 import Database.DbMySQL;
 
 public class CtrlStaff {
-	List<Staff> staffInfo = new ArrayList();
+	private List<Staff> staffInfo = new ArrayList();
 	
 	public List<Staff> getStaffInfo() {
 		String sql = "select * from staff";
@@ -43,6 +43,7 @@ public class CtrlStaff {
 					);
 					staffInfo.add(stf);
 				}
+				DbMySQL.logOff();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

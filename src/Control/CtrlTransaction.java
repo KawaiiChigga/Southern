@@ -33,6 +33,7 @@ public class CtrlTransaction {
 					);
 					transaction.add(t);
 				}
+				DbMySQL.logOff();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
