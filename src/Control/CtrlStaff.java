@@ -9,8 +9,9 @@ import Model.Staff;
 import Database.DbMySQL;
 
 public class CtrlStaff {
+	private List<Staff> staffInfo = new ArrayList();
+	
 	public List<Staff> getStaffInfo() {
-		List<Staff> staffInfo = new ArrayList();
 		String sql = "select * from staff";
 		try {
 			if (DbMySQL.logOn() == null) {
@@ -42,6 +43,7 @@ public class CtrlStaff {
 					);
 					staffInfo.add(stf);
 				}
+				DbMySQL.logOff();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -49,4 +51,11 @@ public class CtrlStaff {
 		return staffInfo;
 	}
 	
+	public boolean logIn (String id, String pass, int arrNum) {
+		if (id.equals(staffInfo.get(arrNum).getIdentity()) && pass.equals(staffInfo.get(arrNum).getPassword())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
