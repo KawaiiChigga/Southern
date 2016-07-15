@@ -24,24 +24,15 @@ import javax.swing.JTextField;
 
 import Control.CtrlStaff;
 import Model.Staff;
+import View.Home;
 
 
 public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyListener {
 
-	private List<Staff> cs;
+	private Staff cs;
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
-	
-	private JLabel lblNAME, lblPASS, lblICON, lblSITE, lblSITEE;
-	private JTextField txtNAME;
-	private JPasswordField txtPASS;
-	private JCheckBox cbPASS;
-	private JButton btn;
-	private JButton btnC;
-	private JFrame frame;
-	private Image bg;
-	
 	
 	public WelcomeLoginDisplay(JFrame frame){
 		this.frame = frame;
@@ -49,7 +40,6 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 	}
 	
 	private void initWelcomeLoginDisplay(){
-		
 		
 		setPreferredSize(new Dimension(screenWidth, screenHeight));
 		setBackground(Color.DARK_GRAY);
@@ -120,7 +110,6 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		txtNAME.addKeyListener(this);
 		txtPASS.addKeyListener(this);
 		btn.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
@@ -132,7 +121,7 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				new Home();
+				new Home(cs);
 				frame.dispose();
 			}
 		});
@@ -161,30 +150,13 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		}
 	}
 	public void loginDetector(){
-		if(cs==null)
-		{
-			cs=new CtrlStaff().getStaffInfo();
-		}
-
 		String name = txtNAME.getText();
 		String pass = txtPASS.getText();
 		boolean success=false;
 		int i=0;
-		while(!success&&i<cs.size())
-		{
-
-			if(cs.get(i).getIdentity().equalsIgnoreCase(name)&&cs.get(i).getPassword().equals(pass))
-			{
-				success=true;
-			}
-			else
-			{
-				i++;
-				
-			}
-		}
-		if(success){
-			new Home();
+		cs = CtrlStaff().login(name, pass);
+		if(cs != null){
+			new Home(cs);
 			frame.dispose();
 		}else{
 			txtNAME.setText("");
@@ -216,5 +188,13 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 
 		repaint();
 	}
-
+	
+	private JLabel lblNAME, lblPASS, lblICON, lblSITE, lblSITEE;
+	private JTextField txtNAME;
+	private JPasswordField txtPASS;
+	private JCheckBox cbPASS;
+	private JButton btn;
+	private JButton btnC;
+	private JFrame frame;
+	private Image bg;
 }
