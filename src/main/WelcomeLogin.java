@@ -20,7 +20,11 @@ public class WelcomeLogin extends JFrame{
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
-	
+	public static <T> T Calculate (T a[])
+	{
+		T tes = a[0];
+		return tes;
+	}
 	public static void main(String[] args){
 		new WelcomeLogin();
 	}
