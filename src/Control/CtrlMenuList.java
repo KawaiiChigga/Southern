@@ -10,9 +10,9 @@ import Model.Menu;
 import Model.Transaction;
 
 public class CtrlMenuList {
-	public List<Menu> getMenuList() {
+	public List<Menu> getMenuList(String tipe) {
 		List<Menu> menulist = new ArrayList();
-		String sql = "select * from menulist";
+		String sql = "select * from menulist where type = '"+tipe+"'";
 		try {
 			if (DbMySQL.logOn() == null) {
 				return null;
