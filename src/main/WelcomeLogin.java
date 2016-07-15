@@ -3,7 +3,7 @@ package Main;
 import javax.swing.JFrame;
 
 import Control.CtrlStaff;
-import View.customer.WelcomeLoginDisplay;
+import View.WelcomeLoginDisplay;
 
 public class WelcomeLogin extends JFrame{
 
