@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import Model.Staff;
 import View.customer.HomeDisplay;
+import View.staff.VCashier;
 
 public class Home extends JFrame {
 	
@@ -14,12 +15,14 @@ public class Home extends JFrame {
 	}
 	
 	private void initHome(){
-		if (stf.getStatus().equalsIgnoreCase("Waiter")) {
-			
-		} else if (stf.getStatus().equalsIgnoreCase("Chef")) {
-			
-		} else if (stf.getStatus().equalsIgnoreCase("Cashier")) {
-			
+		if (stf != null) {
+			if (stf.getStatus().equalsIgnoreCase("Waiter")) {
+				System.out.println("waiter");
+			} else if (stf.getStatus().equalsIgnoreCase("Chef")) {
+				add(new VCashier(this));
+			} else if (stf.getStatus().equalsIgnoreCase("Cashier")) {
+				add(new VCashier(this));
+			}
 		} else {
 			add(new HomeDisplay(this));
 		}
