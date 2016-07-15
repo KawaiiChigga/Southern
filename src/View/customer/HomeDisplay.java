@@ -1,4 +1,4 @@
-package cutomer;
+package View.customer;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.WelcomeLogin;
+import Main.WelcomeLogin;
 
 
 public class HomeDisplay extends JPanel implements ActionListener {
