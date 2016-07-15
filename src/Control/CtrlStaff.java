@@ -9,7 +9,7 @@ import Model.Staff;
 import Database.DbMySQL;
 public class CtrlStaff {
 	
-	public Staff login(String id, String pass) {
+	public static Staff login(String id, String pass) {
 		String sql = "select * from staff where identity = '"+id+"' and password = '"+pass+"'";
 		Staff stf=null;
 		try {
