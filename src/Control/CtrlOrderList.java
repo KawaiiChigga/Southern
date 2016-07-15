@@ -9,9 +9,9 @@ import Database.DbMySQL;
 import Model.Menu;
 
 public class CtrlOrderList {
-	public List<Menu> getMenuList(String tipe) {
-		List<Menu> menulist = new ArrayList();
-		String sql = "select * from menulist where type = '"+tipe+"'";
+	public List<Menu> getOrderList(String tipe) {
+		List<Menu> orderlist = new ArrayList();
+		String sql = "select * from orderlist where isReady = 0";
 		try {
 			if (DbMySQL.logOn() == null) {
 				return null;
@@ -30,14 +30,14 @@ public class CtrlOrderList {
 						true,
 						rs.getDouble("price")
 					);
-					menulist.add(t);
+					orderlist.add(t);
 				}
 				DbMySQL.logOff();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return menulist;
+		return orderlist;
 	}
 
 }

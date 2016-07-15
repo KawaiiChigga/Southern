@@ -7,7 +7,7 @@ public class Menu {
 	private double price;
 	
 	public Menu(String menu_name, String category, String type, String explanation, String url, int menu_id, int duration,
-			boolean isAvailable, double price) {
+		boolean isAvailable, double price) {
 		super();
 		this.menu_name = menu_name;
 		this.category = category;
@@ -21,7 +21,7 @@ public class Menu {
 	}
 	public String getMenu_name() {
 		return menu_name;
-	}
+ 	}
 	public void setMenu_name(String menu_name) {
 		this.menu_name = menu_name;
 	}
