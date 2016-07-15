@@ -3,7 +3,7 @@ package Main;
 import javax.swing.JFrame;
 
 import Control.CtrlStaff;
-import View.customer.WelcomeLoginDisplay;
+import View.WelcomeLoginDisplay;
 
 public class WelcomeLogin extends JFrame{
 
@@ -19,13 +19,8 @@ public class WelcomeLogin extends JFrame{
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
-	public static <T> T Calculate (T a[])
-	{
-		T tes = a[0];
-		return tes;
-	}
+	
 	public static void main(String[] args){
 		new WelcomeLogin();
 	}
-	
 }

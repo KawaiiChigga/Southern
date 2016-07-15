@@ -1,4 +1,4 @@
-package View.customer;
+package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,7 +24,6 @@ import javax.swing.JTextField;
 
 import Control.CtrlStaff;
 import Model.Staff;
-import View.Home;
 
 
 public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyListener {
