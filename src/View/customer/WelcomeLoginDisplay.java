@@ -154,7 +154,7 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		String pass = txtPASS.getText();
 		boolean success=false;
 		int i=0;
-		cs = CtrlStaff().login(name, pass);
+		cs = CtrlStaff.login(name, pass);
 		if(cs != null){
 			new Home(cs);
 			frame.dispose();
