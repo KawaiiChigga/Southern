@@ -1,15 +1,15 @@
-package cutomer;
+package View.customer;
 
 import javax.swing.JFrame;
 
-public class Menu extends JFrame {
+public class Home extends JFrame {
 
-	public Menu(){
-		initMenu();
+	public Home(){
+		initHome();
 	}
 	
-	private void initMenu(){
-		add(new MenuDisplay(this));
+	private void initHome(){
+		add(new HomeDisplay(this));
 		setResizable(false);
 		pack();
 		

@@ -1,4 +1,4 @@
-package cutomer;
+package View.customer;
 
 import java.awt.Color;
 import java.awt.Dimension;
