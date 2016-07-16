@@ -1,13 +1,13 @@
 package Model;
 
 public class Transaction {
-	String tDay, tMonth, tYear, menu_id, price;
+	String tDay, tMonth, tYear, menu_id, price, no_meja;
 	int transaction_id;
 	double total;
 	boolean pay;
 	
-	public Transaction(String tDay, String tMonth, String tYear, String menu_id, String price, int transaction_id,
-			double total, boolean pay) {
+	public Transaction(String tDay, String tMonth, String tYear, String menu_id, String price, int transaction_id, 
+			String no_meja, double total, boolean pay) {
 		super();
 		this.tDay = tDay;
 		this.tMonth = tMonth;
@@ -15,10 +15,19 @@ public class Transaction {
 		this.menu_id = menu_id;
 		this.price = price;
 		this.transaction_id = transaction_id;
+		this.no_meja = no_meja;
 		this.total = total;
 		this.pay = pay;
 	}
 	
+	public String getNo_meja() {
+		return no_meja;
+	}
+
+	public void setNo_meja(String no_meja) {
+		this.no_meja = no_meja;
+	}
+
 	public String gettDay() {
 		return tDay;
 	}
