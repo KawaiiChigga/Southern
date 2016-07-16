@@ -50,6 +50,8 @@ public class CtrlCashier {
 			} else {
 				Statement stm = DbMySQL.logOn().createStatement();
 				ResultSet rs = stm.executeQuery(sql);
+				if(rs.next())
+				{
 					totalprice= rs.getDouble("total");
 					String[] date = rs.getString("transaction_date").split("-");
 					Transaction t = new Transaction (
@@ -64,7 +66,8 @@ public class CtrlCashier {
 						false
 					);
 					bill=t;
-					
+				}
+										
 				DbMySQL.logOff();
 			}
 		} catch (Exception e) {
