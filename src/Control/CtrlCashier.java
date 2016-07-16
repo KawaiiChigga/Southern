@@ -9,7 +9,7 @@ import Database.DbMySQL;
 import Model.Transaction;
 
 public class CtrlCashier {
-	public List<Transaction> getTransList() {
+	public static List<Transaction> getTransList() {
 		List<Transaction> transaction = new ArrayList();
 		String sql = "select * from transaction";
 		try {
@@ -19,7 +19,7 @@ public class CtrlCashier {
 				Statement stm = DbMySQL.logOn().createStatement();
 				ResultSet rs = stm.executeQuery(sql);
 				while (rs.next()) {
-					String[] date = rs.getString("date").split("-");
+					String[] date = rs.getString("transaction_date").split("-");
 					Transaction t = new Transaction (
 						date[2],
 						date[1],
@@ -27,6 +27,7 @@ public class CtrlCashier {
 						rs.getString("menu_id"),
 						rs.getString("price"),
 						rs.getInt("transaction_id"),
+						rs.getString("table_id"),
 						rs.getDouble("total"),
 						false
 					);
@@ -50,7 +51,7 @@ public class CtrlCashier {
 				Statement stm = DbMySQL.logOn().createStatement();
 				ResultSet rs = stm.executeQuery(sql);
 					totalprice= rs.getDouble("total");
-					String[] date = rs.getString("date").split("-");
+					String[] date = rs.getString("transaction_date").split("-");
 					Transaction t = new Transaction (
 						date[2],
 						date[1],
@@ -58,6 +59,7 @@ public class CtrlCashier {
 						rs.getString("menu_id"),
 						rs.getString("price"),
 						rs.getInt("transaction_id"),
+						rs.getString("table_id"),
 						rs.getDouble("total"),
 						false
 					);
