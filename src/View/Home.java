@@ -18,7 +18,7 @@ public class Home extends JFrame {
 	private void initHome(){
 		if (stf != null) {
 			if (stf.getStatus().equalsIgnoreCase("Waiter")) {
-				System.out.println("waiter");
+//				add(new VWaiter(this, stf));
 			} else if (stf.getStatus().equalsIgnoreCase("Chef")) {
 				add(new VChef(this, stf));
 			} else if (stf.getStatus().equalsIgnoreCase("Cashier")) {

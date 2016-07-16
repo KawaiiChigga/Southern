@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2016 at 04:39 PM
+-- Generation Time: Jul 16, 2016 at 06:48 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -32,7 +32,6 @@ CREATE TABLE `menulist` (
   `category` varchar(15) DEFAULT NULL,
   `type` varchar(30) DEFAULT NULL,
   `price` double NOT NULL,
-  `advice` varchar(30) DEFAULT NULL,
   `duration` int(11) NOT NULL,
   `available` tinyint(1) NOT NULL,
   `explanation` varchar(256) DEFAULT NULL,
@@ -76,7 +75,9 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_id`, `identity`, `password`, `name`, `address`, `birthday`, `gender`, `status`, `description`, `available`) VALUES
-('CH001', 'chef1', 'chef1', 'Wati', 'Jalan Wati no 3', '1994-01-06', 'F', 'Chef', 'dia itu chef', 1);
+('CA001', 'cashier1', 'cashier1', 'Cassy', 'Jalan Cassy 123', '1992-09-08', 'F', 'Cashier', 'dia... itu cashier', 1),
+('CH001', 'chef1', 'chef1', 'Wati', 'Jalan Wati no 3', '1994-01-06', 'F', 'Chef', 'dia itu chef', 1),
+('WA001', 'waiter1', 'waiter1', 'Jojon', 'Jalan Jojon 999', '1996-08-11', 'M', 'Waiter', 'ini waiter, bukan chef dan cashier', 1);
 
 -- --------------------------------------------------------
 
@@ -88,10 +89,18 @@ CREATE TABLE `transaction` (
   `transaction_id` int(11) NOT NULL,
   `transaction_date` date NOT NULL,
   `menu_id` varchar(256) NOT NULL,
+  `table_id` varchar(5) NOT NULL,
   `price` varchar(256) NOT NULL,
   `total` double NOT NULL,
   `pay` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`transaction_id`, `transaction_date`, `menu_id`, `table_id`, `price`, `total`, `pay`) VALUES
+(1, '2016-07-15', '1,2,3', 'T0001', '1000,2000,3000', 6000, 0);
 
 --
 -- Indexes for dumped tables
@@ -139,7 +148,7 @@ ALTER TABLE `orderlist`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
