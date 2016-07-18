@@ -1,6 +1,4 @@
-//anjing lah tugas teh
 package View;
-//anjing lah tugas teh
 import javax.swing.JFrame;
 
 import Model.Staff;
@@ -15,7 +13,6 @@ public class Home extends JFrame {
 		this.stf = stf;
 		initHome();
 	}
-	//anjing lah tugas teh
 	private void initHome(){
 		if (stf != null) {
 			if (stf.getStatus().equalsIgnoreCase("Waiter")) {
@@ -36,4 +33,3 @@ public class Home extends JFrame {
 		setVisible(true);
 	}
 }
-//anjing lah tugas teh
