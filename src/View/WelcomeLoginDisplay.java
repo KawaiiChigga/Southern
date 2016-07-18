@@ -91,14 +91,14 @@ public class WelcomeLoginDisplay extends JPanel implements ActionListener, KeyLi
 		btn.setIcon(new ImageIcon("img/go.png"));
 		btn.setContentAreaFilled(false);
 		btn.setBorderPainted(false);
-		btn.setBounds(370, 530, 300, 139);
+		btn.setBounds(370, 530, 300, 138);
 		add(btn);
 		
 		btnC = new JButton();
 		btnC.setIcon(new ImageIcon("img/goC.png"));
 		btnC.setContentAreaFilled(false);
 		btnC.setBorderPainted(false);
-		btnC.setBounds(730, 530, 300, 139);
+		btnC.setBounds(730, 530, 300, 138);
 		add(btnC);
 		
 		lblSITEE = new JLabel();
