@@ -2,12 +2,11 @@ package Model;
 
 public class Menu {
 	private String menu_name, category, type, explanation, url ;
-	private int menu_id, duration;
-	private boolean isAvailable;
+	private int menu_id, duration, isAvailable;
 	private double price;
 	
 	public Menu(String menu_name, String category, String type, String explanation, String url, int menu_id, int duration,
-		boolean isAvailable, double price) {
+		int isAvailable, double price) {
 		super();
 		this.menu_name = menu_name;
 		this.category = category;
@@ -61,10 +60,10 @@ public class Menu {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	public boolean isAvailable() {
+	public int isAvailable() {
 		return isAvailable;
 	}
-	public void setAvailable(boolean isAvailable) {
+	public void setAvailable(int isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 	public double getPrice() {

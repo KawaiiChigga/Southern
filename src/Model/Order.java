@@ -1,10 +1,10 @@
 package Model;
 
 public class Order {
-	private String order_id, menu_id, table_id;
-	private int isReady;
+	private String table_id;
+	private int isReady, order_id, menu_id;
 	
-	public Order(String order_id, String menu_id, String table_id, int isReady) {
+	public Order(int order_id, int menu_id, String table_id, int isReady) {
 		super();
 		this.order_id = order_id;
 		this.menu_id = menu_id;
@@ -12,19 +12,19 @@ public class Order {
 		this.isReady = isReady;
 	}
 
-	public String getOrder_id() {
+	public int getOrder_id() {
 		return order_id;
 	}
 
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
 	}
 
-	public String getMenu_id() {
+	public int getMenu_id() {
 		return menu_id;
 	}
 
-	public void setMenu_id(String menu_id) {
+	public void setMenu_id(int menu_id) {
 		this.menu_id = menu_id;
 	}
 

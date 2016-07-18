@@ -28,7 +28,7 @@ public class CtrlMenuList {
 						rs.getString("path"),
 						rs.getInt("menu_id"),
 						rs.getInt("duration"),
-						true,
+						rs.getInt("available"),
 						rs.getDouble("price")
 					);
 					menulist.add(t);
