@@ -29,7 +29,6 @@ public class VCashier extends JPanel{
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
 	private Staff stf;
-	
 	public VCashier(JFrame frame, Staff stf){
 		this.stf = stf;
 		this.frame = frame;
@@ -72,52 +71,78 @@ public class VCashier extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String[] col = {
-						"ID", "Date", "Table", "Menu", "Price", "Total"
-				};
-				
-				tabelModel = new DefaultTableModel(col, 0);
-				List<Transaction> listT = CtrlCashier.getTransList();
-				for (Transaction transaction : listT) {
-					String date = transaction.gettDay() + "-" + transaction.gettMonth() + "-" + transaction.gettYear();
-					Object[] data = {
-							transaction.getTransaction_id(), 
-							date,
-							transaction.getNo_meja(),
-							transaction.getMenu_id(),
-							transaction.getPrice(),
-							transaction.getTotal()
-					};
-					tabelModel.addRow(data);
-				}
-				
-				tabel = new JTable(tabelModel);
-				
-				js = new JScrollPane(tabel);
-				js.setBounds(0, 0, 800, 500);
-				pnlCheckTrans.add(js);
+				pnlCheckTrans.setVisible(true);
+				refresh();
 			}
 		});
 		
 		btnBill = new JButton();
 		btnBill.setText("Bill");
 		btnBill.setBounds(95, 450, 330, 255);
+		btnBill.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				pnlCheckTrans.setVisible(false);
+			}
+		});
 		
 		pnlCheckTrans = new JPanel();
 		pnlCheckTrans.setBounds(470, 150, 800, 555);
 		pnlCheckTrans.setOpaque(false);
 		pnlCheckTrans.setLayout(null);
+		pnlCheckTrans.setVisible(false);
+		
+		btnRefresh = new JButton();
+		btnRefresh.setText("Refresh");
+		btnRefresh.setBounds(325, 505, 150, 40);
+		btnRefresh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refresh();
+			}
+		});
+		pnlCheckTrans.add(btnRefresh);
 		
 		add(lblIntro);
 		add(btnBill);
 		add(btnCheckTrans);
 		add(pnlCheckTrans);
 	}
+	public void refresh() {
+		String[] col = {
+				"ID", "Date", "Table", "Menu", "Price", "Total"
+		};
+		tabelModel = null;
+		tabelModel = new DefaultTableModel(col, 0);
+		List<Transaction> listT = CtrlCashier.getTransList();
+		for (Transaction transaction : listT) {
+			String date = transaction.gettDay() + "-" + transaction.gettMonth() + "-" + transaction.gettYear();
+			Object[] data = {
+					transaction.getTransaction_id(), 
+					date,
+					transaction.getNo_meja(),
+					transaction.getMenu_id(),
+					transaction.getPrice(),
+					transaction.getTotal()
+			};
+			tabelModel.addRow(data);
+		}
+		
+		tabel = new JTable(tabelModel);
+		
+		js = new JScrollPane(tabel);
+		js.setBounds(0, 0, 800, 500);
+		pnlCheckTrans.add(js);
+	}
+	
 	private DefaultTableModel tabelModel;
 	private JPanel pnlCheckTrans;
 	private JButton btnBill;
 	private JButton btnCheckTrans;
 	private JButton btnSignOut;
+	private JButton btnRefresh;
 	private JLabel lblIntro;
 	private JLabel lblICON;
 	private JTable tabel;
