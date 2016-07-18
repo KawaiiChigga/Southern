@@ -26,6 +26,7 @@ public class Home extends JFrame {
 			add(new HomeDisplay(this));
 		}
 		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		
 		setTitle("Southern");
