@@ -8,8 +8,13 @@ import java.util.List;
 import Database.DbMySQL;
 import Model.Menu;
 import Model.Order;
+<<<<<<< HEAD:src/Control/CtrlChef.java
 
 public class CtrlChef {
+=======
+//anjing lah tugas teh
+public class CtrlOrderList {
+>>>>>>> origin/master:src/Control/CtrlOrderList.java
 	public List<Order> getOrderList(String tipe) {
 		List<Order> orderlist = new ArrayList();
 		String sql = "select * from orderlist where isReady = 0";
@@ -32,8 +37,14 @@ public class CtrlChef {
 			// TODO: handle exception
 		}
 		return orderlist;
+<<<<<<< HEAD:src/Control/CtrlChef.java
 	}
 	public static Order Cook() {
+=======
+	}//anjing lah tugas teh
+	public void Cook() {
+		//anjing lah tugas teh
+>>>>>>> origin/master:src/Control/CtrlOrderList.java
 		String sql = "select * from orderlist where isready = 0";
 		Order cooking = null;
 		try {
@@ -91,6 +102,8 @@ public class CtrlChef {
 			ResultSet rs = stm.executeQuery(sql);
 			if(rs.next())
 			{
+				
+				//anjing lah tugas teh
 				String update = "UPDATE orderlist SET isready=2 where order_id = "+rs.getInt("order_id");
 				stm.executeUpdate(update);				
 			}
@@ -100,5 +113,5 @@ public class CtrlChef {
 			e.printStackTrace();
 		}
 	}
-
+	//anjing lah tugas teh
 }
