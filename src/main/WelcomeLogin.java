@@ -14,6 +14,7 @@ public class WelcomeLogin extends JFrame{
 	private void initWelcomeLogin(){
 		add(new WelcomeLoginDisplay(this));
 		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setTitle("Southern");
 		setLocationRelativeTo(null);

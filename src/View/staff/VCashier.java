@@ -65,8 +65,8 @@ public class VCashier extends JPanel{
 		lblIntro.setFont(new Font("Agency FB", Font.PLAIN, 50));
 		
 		btnCheckTrans = new JButton();
-		btnCheckTrans.setText("Check Transaction");
 		btnCheckTrans.setBounds(95, 150, 330, 255);
+		btnCheckTrans.setIcon(new ImageIcon("img/chk_trans-01.png"));
 		btnCheckTrans.addActionListener(new ActionListener() {
 			
 			@Override
@@ -77,8 +77,8 @@ public class VCashier extends JPanel{
 		});
 		
 		btnBill = new JButton();
-		btnBill.setText("Bill");
 		btnBill.setBounds(95, 450, 330, 255);
+		btnBill.setIcon(new ImageIcon("img/bill-01.png"));
 		btnBill.addActionListener(new ActionListener() {
 			
 			@Override
@@ -94,8 +94,8 @@ public class VCashier extends JPanel{
 		pnlCheckTrans.setVisible(false);
 		
 		btnRefresh = new JButton();
-		btnRefresh.setText("Refresh");
 		btnRefresh.setBounds(325, 505, 150, 40);
+		btnRefresh.setIcon(new ImageIcon("img/refresh-01.png"));
 		btnRefresh.addActionListener(new ActionListener() {
 			
 			@Override

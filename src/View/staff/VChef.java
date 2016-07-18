@@ -86,8 +86,8 @@ public class VChef extends JPanel{
 		lblMenuName.setVisible(false);
 		
 		btnCook = new JButton();
-		btnCook.setText("Cook");
 		btnCook.setBounds((screenWidth/2)-165, 300, 330, 255);
+		btnCook.setIcon(new ImageIcon("img/cook-01.png"));
 		btnCook.addActionListener(new ActionListener() {
 			
 			@Override
