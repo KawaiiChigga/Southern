@@ -8,7 +8,7 @@ import java.util.List;
 import Database.DbMySQL;
 import Model.Menu;
 import Model.Order;
-
+//anjing lah tugas teh
 public class CtrlOrderList {
 	public List<Order> getOrderList(String tipe) {
 		List<Order> orderlist = new ArrayList();
@@ -32,8 +32,9 @@ public class CtrlOrderList {
 			// TODO: handle exception
 		}
 		return orderlist;
-	}
+	}//anjing lah tugas teh
 	public void Cook() {
+		//anjing lah tugas teh
 		String sql = "select * from orderlist where isready = 0";
 		try {
 			Statement stm = DbMySQL.logOn().createStatement();
@@ -56,6 +57,8 @@ public class CtrlOrderList {
 			ResultSet rs = stm.executeQuery(sql);
 			if(rs.next())
 			{
+				
+				//anjing lah tugas teh
 				String update = "UPDATE orderlist SET isready=2 where order_id = "+rs.getInt("order_id");
 				stm.executeUpdate(update);				
 			}
@@ -65,5 +68,5 @@ public class CtrlOrderList {
 			e.printStackTrace();
 		}
 	}
-
+	//anjing lah tugas teh
 }
