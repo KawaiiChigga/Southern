@@ -40,7 +40,7 @@ public class CtrlCashier {
 		}
 		return transaction;
 	}
-	public Transaction getBill(String table){
+	public static Transaction getBill(String table){
 		String sql = "select * from transaction where table_id = '"+table+"' and pay = 0";
 		double totalprice=0;
 		Transaction bill=null;
@@ -74,5 +74,55 @@ public class CtrlCashier {
 			// TODO: handle exception
 		}
 		return bill;
+	}
+	public static String getMenuName(int menu_id) {
+		String s = null;
+		String sql = "select * from menulist where menu_id = " + menu_id;
+		try {
+			if (DbMySQL.logOn() == null) {
+				return null;
+			} else {
+				Statement stm = DbMySQL.logOn().createStatement();
+				ResultSet rs = stm.executeQuery(sql);
+				if(rs.next())
+				{
+					s = rs.getString("menu_name");
+				}
+				DbMySQL.logOff();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return s;
+	}
+	public static double getMenuPrice(int menu_id) {
+		double s = 0;
+		String sql = "select * from menulist where menu_id = " + menu_id;
+		try {
+			if (DbMySQL.logOn() == null) {
+				return 0;
+			} else {
+				Statement stm = DbMySQL.logOn().createStatement();
+				ResultSet rs = stm.executeQuery(sql);
+				if(rs.next())
+				{
+					s = rs.getDouble("price");
+				}
+				DbMySQL.logOff();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return s;
+	}
+	public static void pay(int trans_id) {
+		String update = "UPDATE transaction SET pay=1 where transaction_id = "+trans_id;
+		try {
+			Statement stm = DbMySQL.logOn().createStatement();
+			stm.executeUpdate(update);
+			DbMySQL.logOff();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }

@@ -137,10 +137,32 @@ public class VCashier extends JPanel implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+				checkBill(CtrlCashier.getBill(txtInsertTable.getText()));
 			}
 		});
 		pnlCheckBill.add(btnCheckBill);
+		
+		lblTotal = new JLabel();
+		lblTotal.setFont(new Font("Agency FB", Font.PLAIN, 30));
+		lblTotal.setBounds(525, 275, 200, 100);
+		pnlCheckBill.add(lblTotal);
+		
+		btnPay = new JButton();
+		btnPay.setText("Pay");
+		btnPay.setBounds(525, 375, 275, 150);
+		btnPay.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CtrlCashier.pay(CtrlCashier.getBill(txtInsertTable.getText()).getTransaction_id());
+				txtInsertTable.setText("");
+				js.setVisible(false);
+				lblTotal.setText("");
+				btnPay.setVisible(false);
+			}
+		});
+		btnPay.setVisible(false);
+		pnlCheckBill.add(btnPay);
 		
 		add(lblIntro);
 		add(btnBill);
@@ -152,7 +174,6 @@ public class VCashier extends JPanel implements ActionListener{
 		String[] col = {
 				"ID", "Date", "Table", "Menu", "Price", "Total"
 		};
-		tabelModel = null;
 		tabelModel = new DefaultTableModel(col, 0);
 		List<Transaction> listT = CtrlCashier.getTransList();
 		for (Transaction transaction : listT) {
@@ -174,6 +195,37 @@ public class VCashier extends JPanel implements ActionListener{
 		js.setBounds(0, 0, 800, 500);
 		pnlCheckTrans.add(js);
 	}
+	public void checkBill(Transaction t) {
+		if (t != null) {
+			String[] col = {
+					"Name", "Price"
+			};
+			double total = 0;
+			tabelModel = new DefaultTableModel(col, 0);
+			String[] temp = t.getMenu_id().split(",");
+			for (int i = 0; i < temp.length; i++) {
+				int tempInt = Integer.parseInt(temp[i]);
+				Object[] data = {
+						CtrlCashier.getMenuName(tempInt),
+						CtrlCashier.getMenuPrice(tempInt)
+				};
+				total += CtrlCashier.getMenuPrice(tempInt);
+				tabelModel.addRow(data);
+			}
+			
+			tabel = new JTable(tabelModel);
+			
+			js = new JScrollPane(tabel);
+			js.setBounds(100, 50, 400, 500);
+			pnlCheckBill.add(js);
+			
+			lblTotal.setText("Total : \n" + total);
+			
+			btnPay.setVisible(true);
+		} else {
+			btnPay.setVisible(false);
+		}
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -189,9 +241,11 @@ public class VCashier extends JPanel implements ActionListener{
 	private JButton btnSignOut;
 	private JButton btnRefresh;
 	private JButton btnCheckBill;
+	private JButton btnPay;
 	private JLabel lblInsertTable;
 	private JLabel lblIntro;
 	private JLabel lblICON;
+	private JLabel lblTotal;
 	private JTextField txtInsertTable;
 	private JTable tabel;
 	private JScrollPane js;
