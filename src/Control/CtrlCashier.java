@@ -41,7 +41,7 @@ public class CtrlCashier {
 		return transaction;
 	}
 	public Transaction getBill(String table){
-		String sql = "select * from transaction where table_id = '"+table+"'";
+		String sql = "select * from transaction where table_id = '"+table+"' and pay = 0";
 		double totalprice=0;
 		Transaction bill=null;
 		try {

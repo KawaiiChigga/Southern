@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 import Control.CtrlCashier;
@@ -24,15 +26,17 @@ import Main.WelcomeLogin;
 import Model.Staff;
 import Model.Transaction;
 
-public class VCashier extends JPanel{
+public class VCashier extends JPanel implements ActionListener{
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
 	private Staff stf;
+	private	Timer t;
 	public VCashier(JFrame frame, Staff stf){
 		this.stf = stf;
 		this.frame = frame;
 		initVCashier();
+		t = new Timer(15,this);
 	}
 
 	private void initVCashier() {
@@ -71,8 +75,10 @@ public class VCashier extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				t.start();
+				pnlCheckBill.setVisible(false);
 				pnlCheckTrans.setVisible(true);
-				refresh();
+				
 			}
 		});
 		
@@ -84,6 +90,7 @@ public class VCashier extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				pnlCheckTrans.setVisible(false);
+				pnlCheckBill.setVisible(true);
 			}
 		});
 		
@@ -93,6 +100,12 @@ public class VCashier extends JPanel{
 		pnlCheckTrans.setLayout(null);
 		pnlCheckTrans.setVisible(false);
 		
+		pnlCheckBill = new JPanel();
+		pnlCheckBill.setBounds(470, 150, 800, 555);
+		pnlCheckBill.setOpaque(false);
+		pnlCheckBill.setLayout(null);
+		pnlCheckBill.setVisible(false);
+		
 		btnRefresh = new JButton();
 		btnRefresh.setBounds(325, 505, 150, 40);
 		btnRefresh.setIcon(new ImageIcon("img/refresh-01.png"));
@@ -101,13 +114,38 @@ public class VCashier extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				refresh();
-			}
+			}	
 		});
 		pnlCheckTrans.add(btnRefresh);
+		
+		lblInsertTable = new JLabel();
+		lblInsertTable.setText("Insert the table number : ");
+		lblInsertTable.setFont(new Font("Agency FB", Font.PLAIN, 30));
+		lblInsertTable.setBounds(0, 0, 250, 30);
+		pnlCheckBill.add(lblInsertTable);
+		
+		txtInsertTable = new JTextField(5);
+		txtInsertTable.setBounds(250, 0, 100, 35);
+		txtInsertTable.setFont(new Font("Agency FB", Font.PLAIN, 30));
+		pnlCheckBill.add(txtInsertTable);
+		
+		btnCheckBill = new JButton();
+		btnCheckBill.setText("Process");
+		btnCheckBill.setBounds(370, 0, 100, 35);
+		btnCheckBill.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		pnlCheckBill.add(btnCheckBill);
 		
 		add(lblIntro);
 		add(btnBill);
 		add(btnCheckTrans);
+		add(pnlCheckBill);
 		add(pnlCheckTrans);
 	}
 	public void refresh() {
@@ -136,15 +174,25 @@ public class VCashier extends JPanel{
 		js.setBounds(0, 0, 800, 500);
 		pnlCheckTrans.add(js);
 	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		refresh();
+		t.stop();
+	}
 	
 	private DefaultTableModel tabelModel;
 	private JPanel pnlCheckTrans;
+	private JPanel pnlCheckBill;
 	private JButton btnBill;
 	private JButton btnCheckTrans;
 	private JButton btnSignOut;
 	private JButton btnRefresh;
+	private JButton btnCheckBill;
+	private JLabel lblInsertTable;
 	private JLabel lblIntro;
 	private JLabel lblICON;
+	private JTextField txtInsertTable;
 	private JTable tabel;
 	private JScrollPane js;
 	private JFrame frame;

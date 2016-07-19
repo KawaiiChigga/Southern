@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2016 at 06:48 AM
+-- Generation Time: Jul 19, 2016 at 09:34 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -38,6 +38,13 @@ CREATE TABLE `menulist` (
   `path` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `menulist`
+--
+
+INSERT INTO `menulist` (`menu_id`, `menu_name`, `category`, `type`, `price`, `duration`, `available`, `explanation`, `path`) VALUES
+(1, 'Fried Rice', 'Food', 'Main Course', 35000, 10, 1, 'Fried Rice that made from delicious pork', 'null');
+
 -- --------------------------------------------------------
 
 --
@@ -46,10 +53,17 @@ CREATE TABLE `menulist` (
 
 CREATE TABLE `orderlist` (
   `order_id` int(12) NOT NULL,
-  `menu_id` varchar(5) NOT NULL,
+  `menu_id` int(5) NOT NULL,
   `table_id` varchar(5) NOT NULL,
   `isready` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orderlist`
+--
+
+INSERT INTO `orderlist` (`order_id`, `menu_id`, `table_id`, `isready`) VALUES
+(1, 1, 'T0001', 2);
 
 -- --------------------------------------------------------
 
@@ -96,13 +110,6 @@ CREATE TABLE `transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`transaction_id`, `transaction_date`, `menu_id`, `table_id`, `price`, `total`, `pay`) VALUES
-(1, '2016-07-15', '1,2,3', 'T0001', '1000,2000,3000', 6000, 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -138,17 +145,17 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `menulist`
 --
 ALTER TABLE `menulist`
-  MODIFY `menu_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `menu_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `orderlist`
 --
 ALTER TABLE `orderlist`
-  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
