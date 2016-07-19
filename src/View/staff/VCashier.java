@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,7 +23,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 import Control.CtrlCashier;
-import main.WelcomeLogin;
+import Main.WelcomeLogin;
 import Model.Staff;
 import Model.Transaction;
 
@@ -32,6 +33,7 @@ public class VCashier extends JPanel implements ActionListener{
 	private int screenHeight = screenSize.height;
 	private Staff stf;
 	private	Timer t;
+	private String tbl_num;
 	public VCashier(JFrame frame, Staff stf){
 		this.stf = stf;
 		this.frame = frame;
@@ -154,11 +156,15 @@ public class VCashier extends JPanel implements ActionListener{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CtrlCashier.pay(CtrlCashier.getBill(txtInsertTable.getText()).getTransaction_id());
-				txtInsertTable.setText("");
-				js.setVisible(false);
-				lblTotal.setText("");
-				btnPay.setVisible(false);
+				int n = JOptionPane.showConfirmDialog(null, "Pay this bill?", "Table Number : " + tbl_num.toUpperCase(), JOptionPane.YES_NO_OPTION);
+				if (n == JOptionPane.YES_OPTION) {
+					CtrlCashier.pay(CtrlCashier.getBill(tbl_num).getTransaction_id());
+					txtInsertTable.setText("");
+					js.setVisible(false);
+					lblTotal.setText("");
+					btnPay.setVisible(false);
+					JOptionPane.showMessageDialog(null, "Thank you", "Payment Complete!", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		btnPay.setVisible(false);
@@ -197,6 +203,7 @@ public class VCashier extends JPanel implements ActionListener{
 	}
 	public void checkBill(Transaction t) {
 		if (t != null) {
+			tbl_num = txtInsertTable.getText();
 			String[] col = {
 					"Name", "Price"
 			};
@@ -219,11 +226,11 @@ public class VCashier extends JPanel implements ActionListener{
 			js.setBounds(100, 50, 400, 500);
 			pnlCheckBill.add(js);
 			
-			lblTotal.setText("Total : \n" + total);
+			lblTotal.setText("Total : " + total);
 			
 			btnPay.setVisible(true);
 		} else {
-			btnPay.setVisible(false);
+			JOptionPane.showMessageDialog(null, "Table not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	@Override
