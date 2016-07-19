@@ -1,5 +1,6 @@
 package View;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Model.Staff;
 import View.customer.HomeDisplay;
@@ -23,7 +24,11 @@ public class Home extends JFrame {
 				add(new VCashier(this, stf));
 			}
 		} else {
-			add(new HomeDisplay(this));
+			String tbl_number = "";
+			while(tbl_number.equals("") || tbl_number.length() != 5 || !tbl_number.substring(0, 1).equalsIgnoreCase("T")) {
+				tbl_number = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
+			}
+			add(new HomeDisplay(this, tbl_number));
 		}
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

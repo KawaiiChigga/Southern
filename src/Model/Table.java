@@ -3,13 +3,13 @@ package Model;
 import java.util.ArrayList;
 
 public class Table {
-	private int no_meja;
+	private String no_meja;
 	private ArrayList <Menu> myOrder;
 	
-	public int getNo_meja() {
+	public String getNo_meja() {
 		return no_meja;
 	}
-	public void setNo_meja(int no_meja) {
+	public void setNo_meja(String no_meja) {
 		this.no_meja = no_meja;
 	}
 	public ArrayList<Menu> getMyOrder() {

@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Main.WelcomeLogin;
+import Model.Table;
 
 
 public class HomeDisplay extends JPanel implements ActionListener {
@@ -27,8 +28,10 @@ public class HomeDisplay extends JPanel implements ActionListener {
 	private JFrame frame;
 	private Image bg;
 	private JLabel lblICON;
+	private Table customer;
 	
-	public HomeDisplay(JFrame frame){
+	public HomeDisplay(JFrame frame, String tbl_number){
+		customer.setNo_meja(tbl_number);
 		this.frame = frame;
 		initHomeDisplay();
 	}
