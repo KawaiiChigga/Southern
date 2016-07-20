@@ -10,7 +10,7 @@ import Model.Menu;
 import Model.Order;
 
 public class CtrlChef {
-	public List<Order> getOrderList(String tipe) {
+	public static List<Order> getOrderList() {
 		List<Order> orderlist = new ArrayList();
 		String sql = "select * from orderlist where isReady = 0";
 		try {
