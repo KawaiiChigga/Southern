@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,9 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 import Control.CtrlChef;
+import Control.CtrlWaiter;
 import Main.WelcomeLogin;
 import Model.Menu;
 import Model.Order;
@@ -35,6 +40,7 @@ public class VChef extends JPanel{
 	public VChef(JFrame frame, Staff stf){
 		this.stf = stf;
 		this.frame = frame;
+		refresh();
 		initVChef();
 	}
 
@@ -97,6 +103,7 @@ public class VChef extends JPanel{
 					menu = CtrlChef.getMenuInfo(order.getMenu_id());
 					count = 0;
 					btnCook.setVisible(false);
+					js.setVisible(false);
 					btnSignOut.setVisible(false);
 					t = new Timer(1000, null);
 					lblTimer.setText(menu.getDuration() + "");
@@ -115,7 +122,9 @@ public class VChef extends JPanel{
 								lblTimer.setText((menu.getDuration()-count) + "");
 								add(lblTimer);
 							} else {
+								refresh();
 								count = 0;
+								js.setVisible(true);
 								btnCook.setVisible(true);
 								btnSignOut.setVisible(true);
 								lblTimer.setVisible(false);
@@ -137,6 +146,29 @@ public class VChef extends JPanel{
 		add(lblMenuName);
 		add(btnCook);
 	}
+	public void refresh() {
+		String[] col = {
+				"ID", "Table","Menu"
+		};
+		tabelModel = null;
+		tabelModel = new DefaultTableModel(col, 0);
+		List<Order> listT = CtrlChef.getOrderList();
+		for (Order orderlist : listT) {
+			Object[] data = {
+					orderlist.getMenu_id(),
+					orderlist.getTable_id(),
+					CtrlWaiter.getMenuInfo(orderlist.getMenu_id()).getMenu_name()
+			};
+			tabelModel.addRow(data);
+		}
+		
+		tabel = new JTable(tabelModel);
+		
+		js = new JScrollPane(tabel);
+		js.setBounds((screenWidth/2)-165, 570, 330,150);
+		js.setVisible(true);
+		add(js);
+	}
 	private JButton btnCook;
 	private JButton btnSignOut;
 	private JLabel lblIntro;
@@ -145,4 +177,7 @@ public class VChef extends JPanel{
 	private JLabel lblIsCooking;
 	private JLabel lblMenuName;
 	private JFrame frame;
+	private JTable tabel;
+	private JScrollPane js;
+	private DefaultTableModel tabelModel;
 }

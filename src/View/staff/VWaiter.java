@@ -41,7 +41,6 @@ public class VWaiter extends JPanel{
 	public VWaiter(JFrame frame, Staff stf){
 		this.stf = stf;
 		this.frame = frame;
-		refresh();
 		initVWaiter();
 	}
 	private void initVWaiter() {
@@ -90,31 +89,20 @@ public class VWaiter extends JPanel{
 		lblMenuName.setBounds((screenWidth/2)-100, 200, 200, 150);
 		lblMenuName.setVisible(false);
 		
-		btnRefresh = new JButton();
-		btnRefresh.setBounds((screenWidth/2)+(screenWidth/10), 600, 100, 100);
-		btnRefresh.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				refresh();
-			}
-		});
 		
 		btnServe = new JButton();
-		btnServe.setBounds((screenWidth/2)-(screenWidth/3), 300, 330, 255);
+		btnServe.setBounds((screenWidth/2)-165, 300, 330, 255);
 		btnServe.setIcon(new ImageIcon("img/cook-01.png"));
 		btnServe.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				order = CtrlWaiter.Serve();
-				refresh();
+			
 				if (order != null) {
 					menu = CtrlWaiter.getMenuInfo(order.getMenu_id());
 					CtrlWaiter.FinishServe(order.getOrder_id());
-					refresh();
-					JOptionPane.showMessageDialog(null, menu.getMenu_name()+" Served!", "Information", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Please serve "+menu.getMenu_name()+" to table " +order.getTable_id()+ "!", "Information", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(null, "Readylist is Empty!", "Information", JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -124,41 +112,13 @@ public class VWaiter extends JPanel{
 		add(lblIsCooking);
 		add(lblMenuName);
 		add(btnServe);
-		add(btnRefresh);
-	}
-	public void refresh() {
-		String[] col = {
-				"ID", "Table","Menu"
-		};
-		tabelModel = null;
-		tabelModel = new DefaultTableModel(col, 0);
-		List<Order> listT = CtrlWaiter.getReadyList();
-		for (Order readylist : listT) {
-			Object[] data = {
-					readylist.getMenu_id(),
-					readylist.getTable_id(),
-					CtrlWaiter.getMenuInfo(readylist.getMenu_id()).getMenu_name()
-			};
-			tabelModel.addRow(data);
-		}
-		
-		tabel = new JTable(tabelModel);
-		
-		js = new JScrollPane(tabel);
-		js.setBounds((screenWidth/2)+(screenWidth/10), 20, 330, 500);
-		js.setVisible(true);
-		add(js);
 	}
 	private JButton btnServe;
-	private JButton btnRefresh;
 	private JButton btnSignOut;
 	private JLabel lblIntro;
 	private JLabel lblICON;
 	private JLabel lblTimer;
 	private JLabel lblIsCooking;
 	private JLabel lblMenuName;
-	private DefaultTableModel tabelModel;
-	private JTable tabel;
-	private JScrollPane js;
 	private JFrame frame;
 }
