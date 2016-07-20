@@ -87,4 +87,42 @@ public class CtrlMyOrder {
 		}
 		return m;
 	}
+	public static String getQueueInfo (String no_meja) {
+		String queue = "";
+		int count = 0;
+		String sql = "select * from orderlist where isready not in (3)";
+		try {
+			Statement stm = DbMySQL.logOn().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while(rs.next()) {
+				if (rs.getString("table_id").equals(no_meja)) {
+					queue += count + ",";
+				} 
+				count++;
+			}
+			DbMySQL.logOff();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return queue;
+	}
+	public static String getQueueName (String no_meja) {
+		String queue = "";
+		String sql = "SELECT * FROM orderlist INNER JOIN menulist ON orderlist.menu_id = menulist.menu_id ";
+		try {
+			Statement stm = DbMySQL.logOn().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while(rs.next()) {
+				if (rs.getString("table_id").equals(no_meja)) {
+					queue += rs.getString("menu_name") + ",";
+				} 
+			}
+			DbMySQL.logOff();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return queue;
+	}
 }

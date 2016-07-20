@@ -6,8 +6,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,43 +17,39 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Control.CtrlMyOrder;
-import Model.Menu;
+import Main.WelcomeLogin;
 import Model.Table;
 import View.Home;
 
-public class MyOrderDisplay extends JPanel {
-
+public class FoodProcessDisplay extends JPanel{
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
 
-	private DefaultTableModel tabelModel;
-	private JScrollPane js;
 	private JFrame frame;
 	private JLabel lblICON;
 	private JButton btnBack;
-	private JButton btnConfirm;
-	private JLabel lblNull;
-	private Table customer;
+	private DefaultTableModel tabelModel;
 	private JTable tabel;
-
-	public MyOrderDisplay(JFrame frame, Table customer) {
-		this.customer = customer;
+	private JScrollPane js;
+	private Table customer;
+	private JLabel lblNull;
+	public FoodProcessDisplay(JFrame frame, Table customer){
 		this.frame = frame;
-		initMyOrderDisplay();
+		this.customer = customer;
+		initFoodProcessDisplay();
 	}
-
-	private void initMyOrderDisplay() {
-
+	
+	private void initFoodProcessDisplay() {
 		setPreferredSize(new Dimension(screenWidth, screenHeight));
 		setBackground(Color.WHITE);
 		setLayout(null);
-
+		
 		lblICON = new JLabel();
 		lblICON.setIcon(new ImageIcon("img/logo_chocolate2.png"));
 		lblICON.setBounds(20, 10, 200, 120);
 		add(lblICON);
-
+		
 		btnBack = new JButton();
 		btnBack.setContentAreaFilled(false);
 		btnBack.setBorderPainted(false);
@@ -64,8 +58,6 @@ public class MyOrderDisplay extends JPanel {
 		btnBack.setBounds(1146, 50, 109, 46);
 		add(btnBack);
 		
-		
-
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Home(customer);
@@ -73,52 +65,43 @@ public class MyOrderDisplay extends JPanel {
 			}
 		});
 		
-		btnConfirm = new JButton();
-		btnConfirm.setContentAreaFilled(false);
-		btnConfirm.setBorderPainted(false);
-		btnConfirm.setIcon(new ImageIcon("img/confirm-01.png"));
-		btnConfirm.setForeground(Color.WHITE);
-		btnConfirm.setBounds((screenWidth / 2) - 55, 600, 109, 46);
-		add(btnConfirm);
-		btnConfirm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				CtrlMyOrder.insertOrderList(customer.getMyOrder(),customer.getNo_meja());
-				customer.setOrder(new ArrayList());
-			}
-		});
 		if (customer.getMyOrder() != null) {
-			String[] col = { "ID", "Food Names", "Price" };
-			
+			String[] col = {
+				"Food Name", "Queue Number"	
+			};
 			tabelModel = new DefaultTableModel(col, 0);
-			for (Menu menu : customer.getMyOrder()) {
-				Object[] data = { menu.getMenu_id(), menu.getMenu_name(), menu.getPrice() };
-				tabelModel.addRow(data);
-			}
-			if (tabelModel.getColumnCount() == 0) {
+			String[] queueName = CtrlMyOrder.getQueueName(customer.getNo_meja()).split(",");
+			String[] queue = CtrlMyOrder.getQueueInfo(customer.getNo_meja()).split(",");
+			if (queueName.length == 0) {
 				lblNull = new JLabel();
-				lblNull.setText("Your orderlist is empty :(");
+				lblNull.setText("Your food queue is empty :(");
 				lblNull.setFont(new Font("Agency FB", Font.BOLD, 50));
 				lblNull.setBounds((screenWidth/2)-300, 300, 600, 150);
 				lblNull.setHorizontalAlignment(JLabel.CENTER);
-				btnConfirm.setVisible(false);
 				add(lblNull);
 			} else {
+				for(int i = 0; i < queueName.length; i++) {
+					Object[] data = {
+							queueName[i],
+							queue[i]
+					};
+					tabelModel.addRow(data);
+				}
+				
 				tabel = new JTable(tabelModel);
+				
 				js = new JScrollPane(tabel);
-				js.setBounds((screenWidth / 2) - 300, 150, 600, 450);
-				js.setVisible(true);
-				btnConfirm.setVisible(true);
+				js.setBounds((screenWidth / 2) - 200, 150, 400, 450);
+				
 				add(js);
 			}
 		} else {
 			lblNull = new JLabel();
-			lblNull.setText("Your orderlist is empty :(");
+			lblNull.setText("Your food queue is empty :(");
 			lblNull.setFont(new Font("Agency FB", Font.BOLD, 50));
 			lblNull.setBounds((screenWidth/2)-300, 300, 600, 150);
 			lblNull.setHorizontalAlignment(JLabel.CENTER);
-			btnConfirm.setVisible(false);
 			add(lblNull);
 		}
-		
 	}
 }
