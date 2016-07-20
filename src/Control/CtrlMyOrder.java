@@ -21,7 +21,7 @@ public class CtrlMyOrder {
 			} else {
 				int i=0;
 					while(i<menu.size())
-					{
+					{ 
 						String insert = "INSERT INTO orderlist"
 							    + "(menu_id, table_id, isready) " + "VALUES"
 							    + "("+menu.get(i).getMenu_id()+",'"+noTabel+"','0')";
