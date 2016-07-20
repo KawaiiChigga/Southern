@@ -131,9 +131,8 @@ public class VCashier extends JPanel implements ActionListener{
 		txtInsertTable.setFont(new Font("Agency FB", Font.PLAIN, 30));
 		pnlCheckBill.add(txtInsertTable);
 		
-		btnCheckBill = new JButton();
-		btnCheckBill.setText("Process");
-		btnCheckBill.setBounds(370, 0, 100, 35);
+		btnCheckBill = new JButton(new ImageIcon("img/process-01.png"));
+		btnCheckBill.setBounds(370, 0, 83, 36);
 		btnCheckBill.addActionListener(new ActionListener() {
 			
 			@Override

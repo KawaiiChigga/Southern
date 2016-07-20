@@ -15,9 +15,11 @@ public class Table {
 	public ArrayList<Menu> getMyOrder() {
 		return myOrder;
 	}
-	public void setMyOrder(ArrayList<Menu> myOrder) {
+	public void setOrder(ArrayList<Menu> myOrder) {
 		this.myOrder = myOrder;
 	}
-	
+	public void setMyOrder(Menu myOrder) {
+		this.myOrder.add(myOrder);
+	}
 	
 }

@@ -4,17 +4,15 @@ import javax.swing.JFrame;
 
 import Model.Table;
 
-public class TypeMenu extends JFrame{
+public class MyOrder extends JFrame {
 	private Table customer;
-	private String tipeMenu;
-	public TypeMenu(String tipeMenu, Table customer){
+	public MyOrder(Table customer){
 		this.customer = customer;
-		this.tipeMenu = tipeMenu;
-		initAppetizer();
+		initMyOrder();
 	}
 	
-	private void initAppetizer(){
-		add(new TypeMenuDisplay(this, tipeMenu, customer));
+	private void initMyOrder(){
+		add(new MyOrderDisplay(this, customer));
 		setResizable(false);
 		pack();
 		
