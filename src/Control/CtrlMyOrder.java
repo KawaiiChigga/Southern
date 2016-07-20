@@ -60,4 +60,24 @@ public class CtrlMyOrder {
 		}
 		return m;
 	}
+	public static String getQueueInfo (String no_meja) {
+		String queue = "";
+		int count = 0;
+		String sql = "select * from orderlist where isready not in (3)";
+		try {
+			Statement stm = DbMySQL.logOn().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			boolean found = false;
+			while(rs.next() && !found) {
+				if (rs.getString("table_id").equals(no_meja)) {
+					queue += count + ",";
+				} 
+				count++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return queue;
+	}
 }
