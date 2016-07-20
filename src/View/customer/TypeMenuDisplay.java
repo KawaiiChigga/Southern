@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import Control.CtrlMenuList;
 import Main.WelcomeLogin;
 import Model.Menu;
+import Model.Table;
 import View.customer.Menus;
 import Model.Transaction;
 
@@ -41,8 +42,10 @@ public class TypeMenuDisplay extends JPanel {
 	private JButton btn0, btn1, btn2, btnBack;
 	private JComboBox count0, count1, count2;
 	private String tipeMenu;
-
-	public TypeMenuDisplay(JFrame frame, String tipeMenu) {
+	private Table customer;
+	
+	public TypeMenuDisplay(JFrame frame, String tipeMenu, Table customer) {
+		this.customer = customer;
 		this.frame = frame;
 		this.tipeMenu = tipeMenu;
 		initTypeMenuDisplay();
@@ -87,7 +90,7 @@ public class TypeMenuDisplay extends JPanel {
 
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Menus();
+				new Menus(customer);
 				frame.dispose();
 			}
 		});

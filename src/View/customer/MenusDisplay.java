@@ -74,7 +74,7 @@ public class MenusDisplay extends JPanel implements ActionListener {
 		
 		btnAPP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TypeMenu("Appetizer");
+				new TypeMenu("Appetizer", customer);
 				frame.dispose();
 			}
 		});
@@ -89,7 +89,7 @@ public class MenusDisplay extends JPanel implements ActionListener {
 		
 		btnMC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TypeMenu("Main Course");
+				new TypeMenu("Main Course", customer);
 				frame.dispose();
 			}
 		});
@@ -105,7 +105,7 @@ public class MenusDisplay extends JPanel implements ActionListener {
 		
 		btnDESS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TypeMenu("Dessert");
+				new TypeMenu("Dessert", customer);
 				frame.dispose();
 			}
 		});
@@ -120,7 +120,7 @@ public class MenusDisplay extends JPanel implements ActionListener {
 		
 		btnDRINKS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TypeMenu("Drinks");
+				new TypeMenu("Drinks", customer);
 				frame.dispose();
 			}
 		});
