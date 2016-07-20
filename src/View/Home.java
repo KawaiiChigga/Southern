@@ -6,6 +6,7 @@ import Model.Staff;
 import View.customer.HomeDisplay;
 import View.staff.VCashier;
 import View.staff.VChef;
+import View.staff.VWaiter;
 
 public class Home extends JFrame {
 	
@@ -17,7 +18,7 @@ public class Home extends JFrame {
 	private void initHome(){
 		if (stf != null) {
 			if (stf.getStatus().equalsIgnoreCase("Waiter")) {
-//				add(new VWaiter(this, stf));
+				add(new VWaiter(this, stf));
 			} else if (stf.getStatus().equalsIgnoreCase("Chef")) {
 				add(new VChef(this, stf));
 			} else if (stf.getStatus().equalsIgnoreCase("Cashier")) {
@@ -25,9 +26,9 @@ public class Home extends JFrame {
 			}
 		} else {
 			String tbl_number = "";
-			while(tbl_number.equals("") || tbl_number.length() != 5 || !tbl_number.substring(0, 1).equalsIgnoreCase("T")) {
-				tbl_number = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
-			}
+			//while(tbl_number.equals("") || tbl_number.length() != 5 || !tbl_number.substring(0, 1).equalsIgnoreCase("T")) {
+			//	tbl_number = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
+		//	}
 			add(new HomeDisplay(this, tbl_number));
 		}
 		setResizable(false);

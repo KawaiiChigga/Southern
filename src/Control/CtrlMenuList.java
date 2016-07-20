@@ -10,7 +10,7 @@ import Model.Menu;
 import Model.Transaction;
 
 public class CtrlMenuList {
-	public List<Menu> getMenuList(String tipe) {
+	public static List<Menu> getMenuList(String tipe) {
 		List<Menu> menulist = new ArrayList();
 		String sql = "select * from menulist where type = '"+tipe+"'";
 		try {
