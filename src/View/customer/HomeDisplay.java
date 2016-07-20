@@ -50,7 +50,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnMENU.setBorderPainted(false);
 		btnMENU.setIcon(new ImageIcon("img/button-01.png"));
 		btnMENU.setForeground(Color.WHITE);
-		btnMENU.setBounds(95, 150, 330, 255);
+		btnMENU.setBounds(295, 150, 330, 255);
 		add(btnMENU);
 
 		btnMENU.addActionListener(new ActionListener() {
@@ -65,7 +65,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnMYORDER.setBorderPainted(false);
 		btnMYORDER.setIcon(new ImageIcon("img/button-06.png"));
 		btnMYORDER.setForeground(Color.WHITE);
-		btnMYORDER.setBounds(510, 150, 330, 255);
+		btnMYORDER.setBounds(710, 150, 330, 255);
 		add(btnMYORDER);
 
 		btnMYORDER.addActionListener(new ActionListener() {
@@ -80,7 +80,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnFP.setBorderPainted(false);
 		btnFP.setIcon(new ImageIcon("img/button2-01.png"));
 		btnFP.setForeground(Color.WHITE);
-		btnFP.setBounds(925, 150, 330, 255);
+		btnFP.setBounds(710, 450, 330, 255);
 		add(btnFP);
 
 		btnFP.addActionListener(new ActionListener() {
@@ -90,17 +90,17 @@ public class HomeDisplay extends JPanel implements ActionListener {
 			}
 		});
 
-		JButton btnMYACC = new JButton();
-		btnMYACC.setContentAreaFilled(false);
-		btnMYACC.setBorderPainted(false);
-		btnMYACC.setIcon(new ImageIcon("img/button-04.png"));
-		btnMYACC.setForeground(Color.WHITE);
-		btnMYACC.setBounds(95, 450, 330, 255);
-		add(btnMYACC);
+		JButton btnCHECKOUT = new JButton();
+		btnCHECKOUT.setContentAreaFilled(false);
+		btnCHECKOUT.setBorderPainted(false);
+		btnCHECKOUT.setIcon(new ImageIcon("img/button-04.png"));
+		btnCHECKOUT.setForeground(Color.WHITE);
+		btnCHECKOUT.setBounds(295, 450, 330, 255);
+		add(btnCHECKOUT);
 
-		btnMYACC.addActionListener(new ActionListener() {
+		btnCHECKOUT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// new Menu());
+				// new Menu()); action untuk ngasih bill, lgsg auto sign out
 				frame.dispose();
 			}
 		});
@@ -125,35 +125,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 			}
 		});
 
-		JButton btnGAMES = new JButton();
-		btnGAMES.setContentAreaFilled(false);
-		btnGAMES.setBorderPainted(false);
-		btnGAMES.setIcon(new ImageIcon("img/button-03.png"));
-		btnGAMES.setForeground(Color.WHITE);
-		btnGAMES.setBounds(510, 450, 330, 255);
-		add(btnGAMES);
-
-		btnGAMES.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// new Menu());
-				frame.dispose();
-			}
-		});
-
-		JButton btnCALL = new JButton();
-		btnCALL.setContentAreaFilled(false);
-		btnCALL.setBorderPainted(false);
-		btnCALL.setIcon(new ImageIcon("img/button2-04.png"));
-		btnCALL.setForeground(Color.WHITE);
-		btnCALL.setBounds(925, 450, 330, 255);
-		add(btnCALL);
-
-		btnCALL.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// new Menu());
-				frame.dispose();
-			}
-		});
+		
 	}
 
 	@Override
