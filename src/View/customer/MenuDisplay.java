@@ -14,8 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Main.WelcomeLogin;
 import View.Home;
-import main.WelcomeLogin;
 
 
 public class MenuDisplay extends JPanel implements ActionListener {

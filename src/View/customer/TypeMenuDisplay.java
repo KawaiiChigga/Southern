@@ -19,10 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Control.CtrlMenuList;
+import Main.WelcomeLogin;
 import Model.Menu;
 import View.customer.Menus;
 import Model.Transaction;
-import main.WelcomeLogin;
 
 public class TypeMenuDisplay extends JPanel {
 

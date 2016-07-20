@@ -23,7 +23,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 import Control.CtrlCashier;
-import main.WelcomeLogin;
+import Main.WelcomeLogin;
 import Model.Staff;
 import Model.Transaction;
 
