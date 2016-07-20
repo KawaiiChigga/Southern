@@ -8,8 +8,35 @@ import java.util.List;
 import Database.DbMySQL;
 import Model.Menu;
 import Model.Order;
+import View.Home;
 
 public class CtrlMyOrder {
+	public static void insertOrderList(ArrayList<Menu> menu, String noTabel) {
+		String sql = "select * from orderlist";
+		try {
+			Statement stm = DbMySQL.logOn().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			if (DbMySQL.logOn() == null) {
+				
+			} else {
+				int i=0;
+					while(i<menu.size())
+					{
+						String insert = "INSERT INTO orderlist"
+							    + "(menu_id, table_id, isready) " + "VALUES"
+							    + "("+menu.get(i).getMenu_id()+",'"+noTabel+"','0')";
+
+						stm.executeUpdate(insert);
+						i++;
+					}
+					DbMySQL.logOff();
+				}
+				
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	public static List<Order> getOrderList(String table) {
 		List<Order> orderlist = new ArrayList();
 		String sql = "select * from orderlist where table_id = '"+ table + "'";
