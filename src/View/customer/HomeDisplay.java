@@ -31,6 +31,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 	private Table customer;
 	
 	public HomeDisplay(JFrame frame, String tbl_number){
+		customer = new Table();
 		customer.setNo_meja(tbl_number);
 		this.frame = frame;
 		initHomeDisplay();

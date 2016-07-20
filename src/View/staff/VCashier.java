@@ -146,12 +146,14 @@ public class VCashier extends JPanel implements ActionListener{
 		
 		lblTotal = new JLabel();
 		lblTotal.setFont(new Font("Agency FB", Font.PLAIN, 30));
-		lblTotal.setBounds(525, 275, 200, 100);
+		lblTotal.setBounds(525, 300, 200, 100);
 		pnlCheckBill.add(lblTotal);
 		
 		btnPay = new JButton();
-		btnPay.setText("Pay");
-		btnPay.setBounds(525, 375, 275, 150);
+		btnPay.setIcon(new ImageIcon("img/pay-01.png"));
+		btnPay.setContentAreaFilled(false);
+		btnPay.setBorderPainted(false);
+		btnPay.setBounds(525, 400, 275, 150);
 		btnPay.addActionListener(new ActionListener() {
 			
 			@Override
