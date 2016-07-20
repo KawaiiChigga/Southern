@@ -30,9 +30,8 @@ public class HomeDisplay extends JPanel implements ActionListener {
 	private JLabel lblICON;
 	private Table customer;
 	
-	public HomeDisplay(JFrame frame, String tbl_number){
-		customer = new Table();
-		customer.setNo_meja(tbl_number);
+	public HomeDisplay(JFrame frame, Table customer){
+		this.customer = customer;
 		this.frame = frame;
 		initHomeDisplay();
 	}
@@ -58,7 +57,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		
 		btnMENU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Menus();
+				new Menus(customer);
 				frame.dispose();
 			}
 		});

@@ -15,10 +15,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Main.WelcomeLogin;
+import Model.Table;
 import View.Home;
 
 
-public class MenuDisplay extends JPanel implements ActionListener {
+public class MenusDisplay extends JPanel implements ActionListener {
 
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -29,8 +30,10 @@ public class MenuDisplay extends JPanel implements ActionListener {
 	private Image bg;
 	private JLabel lblICON;
 	private JButton btnBack;
+	private Table customer;
 	
-	public MenuDisplay(JFrame frame){
+	public MenusDisplay(JFrame frame, Table customer){
+		this.customer = customer;
 		this.frame = frame;
 		initMenuDisplay();
 	}
@@ -56,7 +59,7 @@ public class MenuDisplay extends JPanel implements ActionListener {
 		
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Home(null);
+				new Home(customer);
 				frame.dispose();
 			}
 		});

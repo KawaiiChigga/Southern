@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Model.Staff;
+import Model.Table;
 import View.customer.HomeDisplay;
 import View.staff.VCashier;
 import View.staff.VChef;
@@ -11,8 +12,13 @@ import View.staff.VWaiter;
 public class Home extends JFrame {
 	
 	private Staff stf;
+	private Table customer;
 	public Home(Staff stf){
 		this.stf = stf;
+		initHome();
+	}
+	public Home(Table customer) {
+		this.customer = customer;
 		initHome();
 	}
 	private void initHome(){
@@ -25,11 +31,15 @@ public class Home extends JFrame {
 				add(new VCashier(this, stf));
 			}
 		} else {
-			String tbl_number = "";
-			//while(tbl_number.equals("") || tbl_number.length() != 5 || !tbl_number.substring(0, 1).equalsIgnoreCase("T")) {
-			//	tbl_number = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
-		//	}
-			add(new HomeDisplay(this, tbl_number));
+			if (customer == null) {
+				String no_meja = "";
+				while(no_meja.equals("") || no_meja.length() != 5 || !no_meja.substring(0, 1).equalsIgnoreCase("T")) {
+					no_meja = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
+				}
+				customer = new Table();
+				customer.setNo_meja(no_meja);
+			}
+			add(new HomeDisplay(this, customer));
 		}
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
