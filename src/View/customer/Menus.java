@@ -2,14 +2,17 @@ package View.customer;
 
 import javax.swing.JFrame;
 
-public class Menus extends JFrame {
+import Model.Table;
 
-	public Menus(){
+public class Menus extends JFrame {
+	private Table customer;
+	public Menus(Table customer){
+		this.customer = customer;
 		initMenu();
 	}
 	
 	private void initMenu(){
-		add(new MenuDisplay(this));
+		add(new MenusDisplay(this, customer));
 		setResizable(false);
 		pack();
 		
