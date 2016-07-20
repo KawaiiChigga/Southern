@@ -109,7 +109,7 @@ public class CtrlMyOrder {
 	}
 	public static String getQueueName (String no_meja) {
 		String queue = "";
-		String sql = "SELECT * FROM orderlist INNER JOIN menulist ON orderlist.menu_id = menulist.menu_id ";
+		String sql = "SELECT * FROM orderlist INNER JOIN menulist ON orderlist.menu_id = menulist.menu_id where isready not in (3)";
 		try {
 			Statement stm = DbMySQL.logOn().createStatement();
 			ResultSet rs = stm.executeQuery(sql);

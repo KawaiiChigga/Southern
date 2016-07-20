@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Control.CtrlCheckout;
 import Main.WelcomeLogin;
 import Model.Table;
 
@@ -111,8 +112,17 @@ public class HomeDisplay extends JPanel implements ActionListener, MouseListener
 
 		btnCHECKOUT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// new Menu()); action untuk ngasih bill, lgsg auto sign out
-				frame.dispose();
+				int s = JOptionPane.showConfirmDialog(null, "Are you sure want to checkout?", "", JOptionPane.YES_NO_OPTION);
+				if (s == JOptionPane.YES_OPTION) {
+					boolean success = CtrlCheckout.setPaymentInfo(customer.getNo_meja());
+					if (success) {
+						JOptionPane.showMessageDialog(null, "Thank You!", "Information", JOptionPane.INFORMATION_MESSAGE);
+						new WelcomeLogin();
+						frame.dispose();
+					} else {
+						JOptionPane.showMessageDialog(null, "Your payment is empty", "Information", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
 			}
 		});
 
