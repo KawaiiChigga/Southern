@@ -15,8 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Control.CtrlCheckOut;
 import Main.WelcomeLogin;
 import Model.Table;
+import View.Home;
 
 public class HomeDisplay extends JPanel implements ActionListener {
 
@@ -100,8 +102,9 @@ public class HomeDisplay extends JPanel implements ActionListener {
 
 		btnMYACC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// new Menu());
-				frame.dispose();
+				//frame.dispose();
+				CtrlCheckOut.setPaymentInfo(customer.getNo_meja());
+				//new WelcomeLogin();
 			}
 		});
 
