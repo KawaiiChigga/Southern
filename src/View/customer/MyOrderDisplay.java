@@ -2,9 +2,11 @@ package View.customer;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -16,13 +18,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Control.CtrlCashier;
 import Control.CtrlMyOrder;
-import Control.CtrlWaiter;
 import Model.Menu;
-import Model.Order;
 import Model.Table;
-import Model.Transaction;
 import View.Home;
 
 public class MyOrderDisplay extends JPanel {
@@ -37,6 +35,7 @@ public class MyOrderDisplay extends JPanel {
 	private JLabel lblICON;
 	private JButton btnBack;
 	private JButton btnConfirm;
+	private JLabel lblNull;
 	private Table customer;
 	private JTable tabel;
 
@@ -77,29 +76,49 @@ public class MyOrderDisplay extends JPanel {
 		btnConfirm = new JButton();
 		btnConfirm.setContentAreaFilled(false);
 		btnConfirm.setBorderPainted(false);
-		btnConfirm.setIcon(new ImageIcon("img/back.png"));
+		btnConfirm.setIcon(new ImageIcon("img/confirm-01.png"));
 		btnConfirm.setForeground(Color.WHITE);
-		btnConfirm.setBounds((screenWidth / 2) - 55, 550, 109, 46);
+		btnConfirm.setBounds((screenWidth / 2) - 55, 600, 109, 46);
 		add(btnConfirm);
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CtrlMyOrder.insertOrderList(customer.getMyOrder(),customer.getNo_meja());
+				customer.setOrder(new ArrayList());
 			}
 		});
-		String[] col = { "ID", "Food Names", "Price" };
-		
+		if (customer.getMyOrder() != null) {
+			String[] col = { "ID", "Food Names", "Price" };
+			
 			tabelModel = new DefaultTableModel(col, 0);
-			if (customer.getMyOrder() != null) {
 			for (Menu menu : customer.getMyOrder()) {
 				Object[] data = { menu.getMenu_id(), menu.getMenu_name(), menu.getPrice() };
 				tabelModel.addRow(data);
 			}
+			if (tabelModel.getColumnCount() == 0) {
+				lblNull = new JLabel();
+				lblNull.setText("Your orderlist is empty :(");
+				lblNull.setFont(new Font("Agency FB", Font.BOLD, 50));
+				lblNull.setBounds((screenWidth/2)-300, 300, 600, 150);
+				lblNull.setHorizontalAlignment(JLabel.CENTER);
+				btnConfirm.setVisible(false);
+				add(lblNull);
+			} else {
+				tabel = new JTable(tabelModel);
+				js = new JScrollPane(tabel);
+				js.setBounds((screenWidth / 2) - 300, 150, 600, 450);
+				js.setVisible(true);
+				btnConfirm.setVisible(true);
+				add(js);
 			}
-			tabel = new JTable(tabelModel);
-			js = new JScrollPane(tabel);
-			js.setBounds((screenWidth / 2) - 460, 70, 930, 450);
-			js.setVisible(true);
-			add(js);
+		} else {
+			lblNull = new JLabel();
+			lblNull.setText("Your orderlist is empty :(");
+			lblNull.setFont(new Font("Agency FB", Font.BOLD, 50));
+			lblNull.setBounds((screenWidth/2)-300, 300, 600, 150);
+			lblNull.setHorizontalAlignment(JLabel.CENTER);
+			btnConfirm.setVisible(false);
+			add(lblNull);
+		}
 		
 	}
 }

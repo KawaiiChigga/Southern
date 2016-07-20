@@ -70,20 +70,31 @@ public class FoodProcessDisplay extends JPanel{
 				"Food Name", "Queue Number"	
 			};
 			tabelModel = new DefaultTableModel(col, 0);
+			String[] queueName = CtrlMyOrder.getQueueName(customer.getNo_meja()).split(",");
 			String[] queue = CtrlMyOrder.getQueueInfo(customer.getNo_meja()).split(",");
-			for(int i = 0; i < customer.getMyOrder().size(); i++) {
-				Object[] data = {
-						customer.getMyOrder().get(i).getMenu_name(),
-						queue[i]
-				};
+			if (queueName.length == 0) {
+				lblNull = new JLabel();
+				lblNull.setText("Your food queue is empty :(");
+				lblNull.setFont(new Font("Agency FB", Font.BOLD, 50));
+				lblNull.setBounds((screenWidth/2)-300, 300, 600, 150);
+				lblNull.setHorizontalAlignment(JLabel.CENTER);
+				add(lblNull);
+			} else {
+				for(int i = 0; i < queueName.length; i++) {
+					Object[] data = {
+							queueName[i],
+							queue[i]
+					};
+					tabelModel.addRow(data);
+				}
+				
+				tabel = new JTable(tabelModel);
+				
+				js = new JScrollPane(tabel);
+				js.setBounds((screenWidth / 2) - 200, 150, 400, 450);
+				
+				add(js);
 			}
-			
-			tabel = new JTable(tabelModel);
-			
-			js = new JScrollPane(tabel);
-			js.setBounds((screenWidth / 2) - 200, 150, 400, 450);
-			
-			add(js);
 		} else {
 			lblNull = new JLabel();
 			lblNull.setText("Your food queue is empty :(");
