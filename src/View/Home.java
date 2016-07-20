@@ -35,11 +35,11 @@ public class Home extends JFrame {
 		} else {
 			if (customer == null) {
 				String no_meja = "";
-//				while(no_meja.equals("") || no_meja.length() != 5 || !no_meja.substring(0, 1).equalsIgnoreCase("T")) {
-//					no_meja = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
-//				}
+				while(no_meja.equals("") || no_meja.length() != 5 || !no_meja.substring(0, 1).equalsIgnoreCase("T")) {
+					no_meja = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
+				}
 				customer = new Table();
-				customer.setNo_meja("T0001");
+				customer.setNo_meja(no_meja);
 			}
 			add(new HomeDisplay(this, customer));
 		}
