@@ -37,6 +37,7 @@ public class CtrlCheckOut {
 						count++;
 					}
 				}
+				DbMySQL.logOff();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
