@@ -36,6 +36,7 @@ public class MyOrderDisplay extends JPanel {
 	private JFrame frame;
 	private JLabel lblICON;
 	private JButton btnBack;
+	private JButton btnConfirm;
 	private Table customer;
 	private JTable tabel;
 
@@ -63,6 +64,8 @@ public class MyOrderDisplay extends JPanel {
 		btnBack.setForeground(Color.WHITE);
 		btnBack.setBounds(1146, 50, 109, 46);
 		add(btnBack);
+		
+		
 
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -71,18 +74,32 @@ public class MyOrderDisplay extends JPanel {
 			}
 		});
 		
+		btnConfirm = new JButton();
+		btnConfirm.setContentAreaFilled(false);
+		btnConfirm.setBorderPainted(false);
+		btnConfirm.setIcon(new ImageIcon("img/back.png"));
+		btnConfirm.setForeground(Color.WHITE);
+		btnConfirm.setBounds((screenWidth / 2) - 55, 550, 109, 46);
+		add(btnConfirm);
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CtrlMyOrder.insertOrderList(customer.getMyOrder(),customer.getNo_meja());
+			}
+		});
 		String[] col = { "ID", "Food Names", "Price" };
-		if (customer.getMyOrder() != null) {
+		
 			tabelModel = new DefaultTableModel(col, 0);
+			if (customer.getMyOrder() != null) {
 			for (Menu menu : customer.getMyOrder()) {
 				Object[] data = { menu.getMenu_id(), menu.getMenu_name(), menu.getPrice() };
 				tabelModel.addRow(data);
 			}
+			}
 			tabel = new JTable(tabelModel);
 			js = new JScrollPane(tabel);
-			js.setBounds((screenWidth / 2) - 165, 270, 930, 450);
+			js.setBounds((screenWidth / 2) - 460, 70, 930, 450);
 			js.setVisible(true);
 			add(js);
-		}
+		
 	}
 }
