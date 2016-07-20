@@ -58,7 +58,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		
 		btnMENU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Menu();
+				new Menus();
 				frame.dispose();
 			}
 		});
