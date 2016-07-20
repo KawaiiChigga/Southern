@@ -262,9 +262,5 @@ public class TypeMenuDisplay extends JPanel {
 			Menu m = CtrlMenuList.getMenu(listM.get(x).getMenu_id());
 			customer.setMyOrder(m);
 		}
-		System.out.println("====PRINT====");
-		for (int i = 0; i < customer.getMyOrder().size(); i++) {
-			System.out.println(customer.getMyOrder().get(i).getMenu_name());
-		}
 	}
 }

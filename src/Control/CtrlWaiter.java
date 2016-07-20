@@ -89,7 +89,7 @@ public class CtrlWaiter {
 			ResultSet rs = stm.executeQuery(sql);
 			if(rs.next())
 			{
-				String update = "DELETE FROM orderlist where order_id = "+rs.getInt("order_id");
+				String update = "UPDATE orderlist SET isready=3 where order_id = "+rs.getInt("order_id");
 				stm.executeUpdate(update);				
 			}
 			DbMySQL.logOff();
