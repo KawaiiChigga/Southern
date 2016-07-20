@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2016 at 09:34 AM
+-- Generation Time: Jul 20, 2016 at 08:11 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -43,7 +43,15 @@ CREATE TABLE `menulist` (
 --
 
 INSERT INTO `menulist` (`menu_id`, `menu_name`, `category`, `type`, `price`, `duration`, `available`, `explanation`, `path`) VALUES
-(1, 'Fried Rice', 'Food', 'Main Course', 35000, 10, 1, 'Fried Rice that made from delicious pork', 'null');
+(2, 'Caribbean Chicken Salad', 'Food', 'Appetizer', 40000, 10, 1, 'Basic Chicken salad, but with caribbean style!', 'img/Appetizer/Caribbean Chicken Salad.png'),
+(3, 'Grilled Chicken Wings', 'Food', 'Appetizer', 45000, 10, 1, 'Burn burn burn chick wings!', 'img/Appetizer/Grilled Chicken Wings.png'),
+(4, 'Vegetable tian', 'Food', 'Appetizer', 35000, 8, 1, 'For those who vegetarian!', 'img/Appetizer/Vegetable tian.png'),
+(5, 'Eggs In Hell', 'Food', 'Main Course', 60000, 20, 1, 'Feel the Hell of the Eggs!', 'img/Main Course/Eggs In Hell.png'),
+(6, 'Pulled Pork Quesadilla', 'Food', 'Main Course', 65000, 20, 1, 'Deep heaven of pork!', 'img/Main Course/Pulled Pork Quesadilla.png'),
+(7, 'Pulled Pork Sliders', 'Food', 'Main Course', 60000, 10, 1, 'A new Experience of Burger', 'img/Main Course/Pulled Pork Sliders.png'),
+(8, 'Banana Split', 'Food', 'Dessert', 40000, 10, 1, 'Split split bananas!', 'img/Dessert/Banana Split.png'),
+(9, 'Cake Berries', 'Food', 'Dessert', 35000, 5, 1, 'Sweety tiny caky!', 'img/Dessert/Cake Berries.png'),
+(10, 'Classic Ice Cream', 'Food', 'Dessert', 30000, 10, 1, 'Old classic!', 'img/Dessert/Classic Ice Cream.png');
 
 -- --------------------------------------------------------
 
@@ -57,13 +65,6 @@ CREATE TABLE `orderlist` (
   `table_id` varchar(5) NOT NULL,
   `isready` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orderlist`
---
-
-INSERT INTO `orderlist` (`order_id`, `menu_id`, `table_id`, `isready`) VALUES
-(1, 1, 'T0001', 2);
 
 -- --------------------------------------------------------
 
@@ -145,12 +146,12 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `menulist`
 --
 ALTER TABLE `menulist`
-  MODIFY `menu_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `menu_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `orderlist`
 --
 ALTER TABLE `orderlist`
-  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
