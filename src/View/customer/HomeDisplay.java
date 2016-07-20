@@ -102,9 +102,9 @@ public class HomeDisplay extends JPanel implements ActionListener {
 
 		btnMYACC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//frame.dispose();
+				frame.dispose();
 				CtrlCheckOut.setPaymentInfo(customer.getNo_meja());
-				//new WelcomeLogin();
+				new WelcomeLogin();
 			}
 		});
 
