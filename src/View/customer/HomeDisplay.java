@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Main.WelcomeLogin;
+import main.WelcomeLogin;
 import Model.Table;
 
 
@@ -31,7 +31,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 	private Table customer;
 	
 	public HomeDisplay(JFrame frame, String tbl_number){
-		customer.setNo_meja(tbl_number);
+		//customer.setNo_meja(tbl_number);
 		this.frame = frame;
 		initHomeDisplay();
 	}
@@ -57,7 +57,7 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		
 		btnMENU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Menu();
+				new Menus();
 				frame.dispose();
 			}
 		});

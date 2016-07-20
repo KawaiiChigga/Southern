@@ -2,14 +2,14 @@ package View.customer;
 
 import javax.swing.JFrame;
 
-public class Appetizer extends JFrame{
+public class Menus extends JFrame {
 
-	public Appetizer(){
-		initAppetizer();
+	public Menus(){
+		initMenu();
 	}
 	
-	private void initAppetizer(){
-		add(new AppetizerDisplay(this));
+	private void initMenu(){
+		add(new MenuDisplay(this));
 		setResizable(false);
 		pack();
 		

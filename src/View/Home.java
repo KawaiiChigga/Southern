@@ -25,9 +25,9 @@ public class Home extends JFrame {
 			}
 		} else {
 			String tbl_number = "";
-			while(tbl_number.equals("") || tbl_number.length() != 5 || !tbl_number.substring(0, 1).equalsIgnoreCase("T")) {
-				tbl_number = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
-			}
+			//while(tbl_number.equals("") || tbl_number.length() != 5 || !tbl_number.substring(0, 1).equalsIgnoreCase("T")) {
+			//	tbl_number = JOptionPane.showInputDialog(null, "Table Number <TXXXX> : ", "DEMO", JOptionPane.INFORMATION_MESSAGE);
+		//	}
 			add(new HomeDisplay(this, tbl_number));
 		}
 		setResizable(false);

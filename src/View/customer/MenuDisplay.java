@@ -14,6 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import View.Home;
+import main.WelcomeLogin;
+
 
 public class MenuDisplay extends JPanel implements ActionListener {
 
@@ -25,6 +28,7 @@ public class MenuDisplay extends JPanel implements ActionListener {
 	private JFrame frame;
 	private Image bg;
 	private JLabel lblICON;
+	private JButton btnBack;
 	
 	public MenuDisplay(JFrame frame){
 		this.frame = frame;
@@ -42,6 +46,21 @@ public class MenuDisplay extends JPanel implements ActionListener {
 		lblICON.setBounds(20, 10, 200, 120);
 		add(lblICON);
 		
+		btnBack = new JButton();
+		btnBack.setContentAreaFilled(false);
+		btnBack.setBorderPainted(false);
+		btnBack.setIcon(new ImageIcon("img/back.png"));
+		btnBack.setForeground(Color.WHITE);
+		btnBack.setBounds(1146, 50, 109, 46);
+		add(btnBack);
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Home(null);
+				frame.dispose();
+			}
+		});
+		
 		JButton btnAPP = new JButton();
 		btnAPP.setContentAreaFilled(false);
 		btnAPP.setBorderPainted(false);
@@ -52,7 +71,7 @@ public class MenuDisplay extends JPanel implements ActionListener {
 		
 		btnAPP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				new Menu());
+				new TypeMenu("Appetizer");
 				frame.dispose();
 			}
 		});

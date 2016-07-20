@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Control.CtrlChef;
-import Main.WelcomeLogin;
+import main.WelcomeLogin;
 import Model.Menu;
 import Model.Order;
 import Model.Staff;
