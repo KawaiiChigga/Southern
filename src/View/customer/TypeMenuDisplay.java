@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -38,12 +39,12 @@ public class TypeMenuDisplay extends JPanel {
 	private JLabel lbl0Name, lbl0Img, lbl0Price, lbl0Ex;
 	private JLabel lbl1Name, lbl1Img, lbl1Price, lbl1Ex;
 	private JLabel lbl2Name, lbl2Img, lbl2Price, lbl2Ex;
-
+	private List<Menu> listM;
 	private JButton btn0, btn1, btn2, btnBack;
 	private JComboBox count0, count1, count2;
 	private String tipeMenu;
 	private Table customer;
-	
+
 	public TypeMenuDisplay(JFrame frame, String tipeMenu, Table customer) {
 		this.customer = customer;
 		this.frame = frame;
@@ -56,7 +57,8 @@ public class TypeMenuDisplay extends JPanel {
 		setBackground(Color.WHITE);
 		setLayout(null);
 
-		List<Menu> listM = CtrlMenuList.getMenuList(tipeMenu);
+		listM = CtrlMenuList.getMenuList(tipeMenu);
+
 		String mName0 = listM.get(0).getMenu_name();
 		String mImg0 = listM.get(0).getUrl();
 		double mPrice0 = listM.get(0).getPrice();
@@ -127,14 +129,15 @@ public class TypeMenuDisplay extends JPanel {
 		btn0 = new JButton();
 		btn0.setContentAreaFilled(false);
 		btn0.setBorderPainted(false);
-		btn0.setIcon(new ImageIcon("img/back.png"));
+		btn0.setIcon(new ImageIcon("img/order_orange-01.png"));
 		btn0.setForeground(Color.WHITE);
 		btn0.setBounds(150, 550, 109, 46);
 		add(btn0);
 
 		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// for(int i=0; i<count0.gett)
+				order(0);
+				count0.setSelectedIndex(0);
 			}
 		});
 
@@ -151,7 +154,7 @@ public class TypeMenuDisplay extends JPanel {
 
 		lbl1Img = new JLabel();
 		lbl1Img.setIcon(new ImageIcon(mImg1));
-		lbl1Img.setBounds(560, 220, 200, 200);
+		lbl1Img.setBounds(570, 220, 200, 200);
 		add(lbl1Img);
 
 		lbl1Ex = new JLabel(mEx1);
@@ -169,22 +172,23 @@ public class TypeMenuDisplay extends JPanel {
 		Object[] countPilih1 = { 0, 1, 2, 3, 4, 5 };
 		count1 = new JComboBox(countPilih);
 		count1.setFont(new Font("The Heart of Everything Demo", Font.PLAIN, 15));
-		count1.setBounds(560, 553, 50, 40);
+		count1.setBounds(660, 553, 50, 40);
 		add(count1);
 
-		// btn1 = new JButton();
-		// btn1.setContentAreaFilled(false);
-		// btn1.setBorderPainted(false);
-		// btn1.setIcon(new ImageIcon("img/back.png"));
-		// btn1.setForeground(Color.WHITE);
-		// btn1.setBounds(0, 0, 109, 46);
-		// add(btn1);
-		//
-		// btn1.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent arg0) {
-		//
-		// }
-		// });
+		btn1 = new JButton();
+		btn1.setContentAreaFilled(false);
+		btn1.setBorderPainted(false);
+		btn1.setIcon(new ImageIcon("img/order_chocolate-01.png"));
+		btn1.setForeground(Color.WHITE);
+		btn1.setBounds(560, 550, 109, 46);
+		add(btn1);
+
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				order(1);
+				count1.setSelectedIndex(0);
+			}
+		});
 
 		lblORANGE = new JLabel();
 		lblORANGE.setIcon(new ImageIcon("img/orange.jpg"));
@@ -217,21 +221,23 @@ public class TypeMenuDisplay extends JPanel {
 		Object[] countPilih2 = { 0, 1, 2, 3, 4, 5 };
 		count2 = new JComboBox(countPilih);
 		count2.setFont(new Font("The Heart of Everything Demo", Font.PLAIN, 15));
-		count2.setBounds(975, 553, 50, 40);
+		count2.setBounds(1075, 553, 50, 40);
 		add(count2);
-		// btn2 = new JButton();
-		// btn2.setContentAreaFilled(false);
-		// btn2.setBorderPainted(false);
-		// btn2.setIcon(new ImageIcon("img/back.png"));
-		// btn2.setForeground(Color.WHITE);
-		// btn2.setBounds(150, 550, 109, 46);
-		// add(btn2);
-		//
-		// btn2.addActionListener(new ActionListener() {
-		// public void actionPerformed(ActionEvent arg0) {
-		//
-		// }
-		// });
+
+		btn2 = new JButton();
+		btn2.setContentAreaFilled(false);
+		btn2.setBorderPainted(false);
+		btn2.setIcon(new ImageIcon("img/order_orange-01.png"));
+		btn2.setForeground(Color.WHITE);
+		btn2.setBounds(975, 550, 109, 46);
+		add(btn2);
+
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				order(2);
+				count2.setSelectedIndex(0);
+			}
+		});
 
 		lblBROWN2 = new JLabel();
 		lblBROWN2.setIcon(new ImageIcon("img/brown.jpg"));
@@ -240,4 +246,25 @@ public class TypeMenuDisplay extends JPanel {
 
 	}
 
+	private void order(int x) {
+		int count = 0;
+		if (x == 0) {
+			count = count0.getSelectedIndex();
+		} else if (x == 1) {
+			count = count1.getSelectedIndex();
+		} else if (x == 2) {
+			count = count2.getSelectedIndex();
+		}
+		if (customer.getMyOrder() == null) {
+			customer.setOrder(new ArrayList());
+		}
+		for (int i = 0; i < count; i++) {
+			Menu m = CtrlMenuList.getMenu(listM.get(x).getMenu_id());
+			customer.setMyOrder(m);
+		}
+		System.out.println("====PRINT====");
+		for (int i = 0; i < customer.getMyOrder().size(); i++) {
+			System.out.println(customer.getMyOrder().get(i).getMenu_name());
+		}
+	}
 }

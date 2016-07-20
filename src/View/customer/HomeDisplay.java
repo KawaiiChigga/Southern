@@ -12,41 +12,39 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Main.WelcomeLogin;
 import Model.Table;
 
-
 public class HomeDisplay extends JPanel implements ActionListener {
 
-	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private int screenWidth = screenSize.width;
 	private int screenHeight = screenSize.height;
-	
 	private JFrame frame;
 	private Image bg;
 	private JLabel lblICON;
 	private Table customer;
-	
-	public HomeDisplay(JFrame frame, Table customer){
+
+	public HomeDisplay(JFrame frame, Table customer) {
 		this.customer = customer;
 		this.frame = frame;
 		initHomeDisplay();
 	}
-	
-	private void initHomeDisplay(){
-		
+
+	private void initHomeDisplay() {
+
 		setPreferredSize(new Dimension(screenWidth, screenHeight));
 		setBackground(Color.WHITE);
 		setLayout(null);
-		
+
 		lblICON = new JLabel();
 		lblICON.setIcon(new ImageIcon("img/logo_chocolate2.png"));
 		lblICON.setBounds(20, 10, 200, 120);
 		add(lblICON);
-		
+
 		JButton btnMENU = new JButton();
 		btnMENU.setContentAreaFilled(false);
 		btnMENU.setBorderPainted(false);
@@ -54,14 +52,14 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnMENU.setForeground(Color.WHITE);
 		btnMENU.setBounds(95, 150, 330, 255);
 		add(btnMENU);
-		
+
 		btnMENU.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Menus(customer);
 				frame.dispose();
 			}
 		});
-		
+
 		JButton btnMYORDER = new JButton();
 		btnMYORDER.setContentAreaFilled(false);
 		btnMYORDER.setBorderPainted(false);
@@ -69,15 +67,14 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnMYORDER.setForeground(Color.WHITE);
 		btnMYORDER.setBounds(510, 150, 330, 255);
 		add(btnMYORDER);
-		
+
 		btnMYORDER.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				new Menu());
+				 new MyOrder(customer);
 				frame.dispose();
 			}
 		});
-		
-		
+
 		JButton btnFP = new JButton();
 		btnFP.setContentAreaFilled(false);
 		btnFP.setBorderPainted(false);
@@ -85,14 +82,14 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnFP.setForeground(Color.WHITE);
 		btnFP.setBounds(925, 150, 330, 255);
 		add(btnFP);
-		
+
 		btnFP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				new Menu());
+				// new Menu());
 				frame.dispose();
 			}
 		});
-		
+
 		JButton btnMYACC = new JButton();
 		btnMYACC.setContentAreaFilled(false);
 		btnMYACC.setBorderPainted(false);
@@ -100,14 +97,14 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnMYACC.setForeground(Color.WHITE);
 		btnMYACC.setBounds(95, 450, 330, 255);
 		add(btnMYACC);
-		
+
 		btnMYACC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				new Menu());
+				// new Menu());
 				frame.dispose();
 			}
 		});
-		
+
 		JButton btnBack = new JButton();
 		btnBack.setContentAreaFilled(false);
 		btnBack.setBorderPainted(false);
@@ -115,14 +112,19 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnBack.setForeground(Color.WHITE);
 		btnBack.setBounds(1146, 50, 109, 46);
 		add(btnBack);
-		
+
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new WelcomeLogin();
-				frame.dispose();
+				if (customer.getMyOrder()==null) {
+					new WelcomeLogin();
+					frame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Please complete your bill first.");
+				}
+
 			}
 		});
-		
+
 		JButton btnGAMES = new JButton();
 		btnGAMES.setContentAreaFilled(false);
 		btnGAMES.setBorderPainted(false);
@@ -130,14 +132,14 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnGAMES.setForeground(Color.WHITE);
 		btnGAMES.setBounds(510, 450, 330, 255);
 		add(btnGAMES);
-		
+
 		btnGAMES.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				new Menu());
+				// new Menu());
 				frame.dispose();
 			}
 		});
-		
+
 		JButton btnCALL = new JButton();
 		btnCALL.setContentAreaFilled(false);
 		btnCALL.setBorderPainted(false);
@@ -145,16 +147,15 @@ public class HomeDisplay extends JPanel implements ActionListener {
 		btnCALL.setForeground(Color.WHITE);
 		btnCALL.setBounds(925, 450, 330, 255);
 		add(btnCALL);
-		
+
 		btnCALL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				new Menu());
+				// new Menu());
 				frame.dispose();
 			}
 		});
 	}
 
-	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
@@ -163,10 +164,10 @@ public class HomeDisplay extends JPanel implements ActionListener {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		g.drawImage(bg, 0, 0, this);
-		
+
 		Toolkit.getDefaultToolkit().sync();
 	}
-	
+
 }

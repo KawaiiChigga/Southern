@@ -150,7 +150,6 @@ public class VChef extends JPanel{
 		String[] col = {
 				"ID", "Table","Menu"
 		};
-		tabelModel = null;
 		tabelModel = new DefaultTableModel(col, 0);
 		List<Order> listT = CtrlChef.getOrderList();
 		for (Order orderlist : listT) {
