@@ -92,7 +92,7 @@ public class VWaiter extends JPanel{
 		
 		btnServe = new JButton();
 		btnServe.setBounds((screenWidth/2)-165, 300, 330, 255);
-		btnServe.setIcon(new ImageIcon("img/cook-01.png"));
+		btnServe.setIcon(new ImageIcon("img/serve-01.png"));
 		btnServe.addActionListener(new ActionListener() {
 			
 			@Override
