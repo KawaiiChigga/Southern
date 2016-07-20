@@ -6,6 +6,7 @@ import Model.Staff;
 import View.customer.HomeDisplay;
 import View.staff.VCashier;
 import View.staff.VChef;
+import View.staff.VWaiter;
 
 public class Home extends JFrame {
 	
@@ -17,7 +18,7 @@ public class Home extends JFrame {
 	private void initHome(){
 		if (stf != null) {
 			if (stf.getStatus().equalsIgnoreCase("Waiter")) {
-//				add(new VWaiter(this, stf));
+				add(new VWaiter(this, stf));
 			} else if (stf.getStatus().equalsIgnoreCase("Chef")) {
 				add(new VChef(this, stf));
 			} else if (stf.getStatus().equalsIgnoreCase("Cashier")) {
