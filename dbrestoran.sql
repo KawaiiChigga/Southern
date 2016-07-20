@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2016 at 08:11 PM
+-- Generation Time: Jul 21, 2016 at 12:15 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -51,7 +51,10 @@ INSERT INTO `menulist` (`menu_id`, `menu_name`, `category`, `type`, `price`, `du
 (7, 'Pulled Pork Sliders', 'Food', 'Main Course', 60000, 10, 1, 'A new Experience of Burger', 'img/Main Course/Pulled Pork Sliders.png'),
 (8, 'Banana Split', 'Food', 'Dessert', 40000, 10, 1, 'Split split bananas!', 'img/Dessert/Banana Split.png'),
 (9, 'Cake Berries', 'Food', 'Dessert', 35000, 5, 1, 'Sweety tiny caky!', 'img/Dessert/Cake Berries.png'),
-(10, 'Classic Ice Cream', 'Food', 'Dessert', 30000, 10, 1, 'Old classic!', 'img/Dessert/Classic Ice Cream.png');
+(10, 'Classic Ice Cream', 'Food', 'Dessert', 30000, 10, 1, 'Old classic!', 'img/Dessert/Classic Ice Cream.png'),
+(11, 'Cola', 'Drinks', 'Drinks', 20000, 5, 1, 'Colalalalala', 'img/Drinks/Cola.png'),
+(12, 'Milkshake', 'Drinks', 'Drinks', 25000, 8, 1, 'Ice cream, milks, boom', 'img/Drinks/Milkshake.png'),
+(13, 'Juice', 'Drinks', 'Drinks', 30000, 8, 1, 'fruit fruits fruitss', 'img/Drinks/Juice.png');
 
 -- --------------------------------------------------------
 
@@ -146,7 +149,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `menulist`
 --
 ALTER TABLE `menulist`
-  MODIFY `menu_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `menu_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `orderlist`
 --
