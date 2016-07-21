@@ -107,24 +107,27 @@ public class TypeMenuDisplay extends JPanel implements MouseListener {
 		lbl0Name = new JLabel('"' + mName0 + '"');
 		lbl0Name.setFont(new Font("Franchise", Font.PLAIN, 30));
 		lbl0Name.setForeground(Color.WHITE);
-		lbl0Name.setBounds(135, 120, 330, 120);
+		lbl0Name.setBounds(95, 120, 330, 120);
+		lbl0Name.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl0Name);
 
 		lbl0Img = new JLabel();
 		lbl0Img.setIcon(new ImageIcon(mImg0));
-		lbl0Img.setBounds(170, 220, 200, 200);
+		lbl0Img.setBounds(155, 220, 200, 200);
 		add(lbl0Img);
 
 		lbl0Ex = new JLabel(mEx0);
 		lbl0Ex.setFont(new Font("Franchise", Font.PLAIN, 20));
 		lbl0Ex.setForeground(Color.WHITE);
-		lbl0Ex.setBounds(120, 400, 330, 120);
+		lbl0Ex.setBounds(95, 400, 330, 120);
+		lbl0Ex.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl0Ex);
 
 		lbl0Price = new JLabel(mPricee0 + "");
 		lbl0Price.setFont(new Font("The Heart of Everything Demo", Font.PLAIN, 40));
 		lbl0Price.setForeground(Color.WHITE);
-		lbl0Price.setBounds(200, 450, 330, 120);
+		lbl0Price.setBounds(95, 450, 330, 120);
+		lbl0Price.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl0Price);
 
 		Object[] countPilih = { 0, 1, 2, 3, 4, 5 };
@@ -156,24 +159,27 @@ public class TypeMenuDisplay extends JPanel implements MouseListener {
 		lbl1Name = new JLabel('"' + mName1 + '"');
 		lbl1Name.setFont(new Font("Franchise", Font.PLAIN, 30));
 		lbl1Name.setForeground(Color.WHITE);
-		lbl1Name.setBounds(560, 120, 330, 120);
+		lbl1Name.setBounds(510, 120, 330, 120);
+		lbl1Name.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl1Name);
 
 		lbl1Img = new JLabel();
 		lbl1Img.setIcon(new ImageIcon(mImg1));
-		lbl1Img.setBounds(570, 220, 200, 200);
+		lbl1Img.setBounds(575, 220, 200, 200);
 		add(lbl1Img);
 
 		lbl1Ex = new JLabel(mEx1);
 		lbl1Ex.setFont(new Font("Franchise", Font.PLAIN, 20));
 		lbl1Ex.setForeground(Color.WHITE);
-		lbl1Ex.setBounds(560, 400, 330, 120);
+		lbl1Ex.setBounds(510, 400, 330, 120);
+		lbl1Ex.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl1Ex);
 
 		lbl1Price = new JLabel(mPricee1 + "");
 		lbl1Price.setFont(new Font("The Heart of Everything Demo", Font.PLAIN, 40));
 		lbl1Price.setForeground(Color.WHITE);
-		lbl1Price.setBounds(560, 450, 330, 120);
+		lbl1Price.setBounds(510, 450, 330, 120);
+		lbl1Price.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl1Price);
 
 		Object[] countPilih1 = { 0, 1, 2, 3, 4, 5 };
@@ -205,24 +211,27 @@ public class TypeMenuDisplay extends JPanel implements MouseListener {
 		lbl2Name = new JLabel('"' + mName2 + '"');
 		lbl2Name.setFont(new Font("Franchise", Font.PLAIN, 30));
 		lbl2Name.setForeground(Color.WHITE);
-		lbl2Name.setBounds(975, 120, 330, 120);
+		lbl2Name.setBounds(925, 120, 330, 120);
+		lbl2Name.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl2Name);
 
 		lbl2Img = new JLabel();
 		lbl2Img.setIcon(new ImageIcon(mImg2));
-		lbl2Img.setBounds(975, 220, 200, 200);
+		lbl2Img.setBounds(990, 220, 200, 200);
 		add(lbl2Img);
 
 		lbl2Ex = new JLabel(mEx2);
 		lbl2Ex.setFont(new Font("Franchise", Font.PLAIN, 20));
 		lbl2Ex.setForeground(Color.WHITE);
-		lbl2Ex.setBounds(975, 400, 330, 120);
+		lbl2Ex.setBounds(925, 400, 330, 120);
+		lbl2Ex.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl2Ex);
 
 		lbl2Price = new JLabel(mPricee2 + "");
 		lbl2Price.setFont(new Font("The Heart of Everything Demo", Font.PLAIN, 40));
 		lbl2Price.setForeground(Color.WHITE);
-		lbl2Price.setBounds(975, 450, 330, 120);
+		lbl2Price.setBounds(925, 450, 330, 120);
+		lbl2Price.setHorizontalAlignment(JLabel.CENTER);
 		add(lbl2Price);
 
 		Object[] countPilih2 = { 0, 1, 2, 3, 4, 5 };
