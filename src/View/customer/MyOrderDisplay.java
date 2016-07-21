@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -82,8 +83,13 @@ public class MyOrderDisplay extends JPanel {
 		add(btnConfirm);
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CtrlMyOrder.insertOrderList(customer.getMyOrder(),customer.getNo_meja());
-				customer.setOrder(new ArrayList());
+				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?", "Information", JOptionPane.YES_NO_OPTION);
+				if (confirm == JOptionPane.YES_OPTION) {
+					CtrlMyOrder.insertOrderList(customer.getMyOrder(),customer.getNo_meja());
+					customer.setOrder(new ArrayList());
+					new Home(customer);
+					frame.dispose();
+				}
 			}
 		});
 		if (customer.getMyOrder() != null) {

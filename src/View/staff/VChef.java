@@ -95,7 +95,7 @@ public class VChef extends JPanel implements MouseListener{
 		lblMenuName = new JLabel();
 		lblMenuName.setFont(new Font("Agency FB", Font.PLAIN, 50));
 		lblMenuName.setHorizontalAlignment(JLabel.CENTER);
-		lblMenuName.setBounds((screenWidth/2)-100, 200, 200, 150);
+		lblMenuName.setBounds((screenWidth/2)-200, 200, 400, 150);
 		lblMenuName.setVisible(false);
 		
 		btnCook = new JButton();
